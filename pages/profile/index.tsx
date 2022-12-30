@@ -25,7 +25,7 @@ const HOC_ProfileBasicBox = withProfile(ProfileBasicBox);
 const HOC_ProfileSettingsBox = withProfile(ProfileSettingsBox);
 const HOC_ProfileSchoolCodeBox = withProfile(ProfileSchoolCodeBox);
 
-// const HOC_ProfileAvatarBlock = withProfile(ProfileAvatarBlock);
+// const HOC_ProfileSettingsBox = withProfile(ProfileAvatarBlock);
 // const HOC_ProfileAvatarBlock = withProfile(ProfileAvatarBlock);
 // const HOC_ProfileAvatarBlock = withProfile(ProfileAvatarBlock);
 
@@ -56,11 +56,11 @@ const Profile: NextPage<UProps> = (props) => {
               {JSON.stringify(profile)}
               <HOC_ProfileAvatarBlock />
               <HOC_ProfileBasicBox />
-              {/* <ProfileSchoolCodeBox /> */}
-              {/* <ProfileGoogleScholarBox /> */}
-              {/* <ProfileScopusBox />
-              <ProfileOrcidBox /> */}
-              {/* <ProfileSettingsBox /> */}
+              <ProfileSchoolCodeBox/>
+              <ProfileGoogleScholarBox />
+              <ProfileScopusBox />
+              <ProfileOrcidBox />
+              <ProfileSettingsBox />
             </div>
           </div>
         </main>

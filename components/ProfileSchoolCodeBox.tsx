@@ -6,11 +6,7 @@ type UProps = {
 };
 
 function ProfileSchoolCodeBox(props: UProps) {
-  const { user } = props;
-  const [schoolCode, setSchoolCode] = React.useState<AuthUserInfo>({
-    ...user,
-    schoolCode: user.schoolCode,
-  });
+  const [schoolCode, setSchoolCode] = React.useState("");
   return (
     <>
       <div className="bg-white p-4 feed-item rounded-4 shadow-sm faq-page mb-3">

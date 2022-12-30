@@ -7,11 +7,8 @@ import HashBox from "./HashBox";
 import TrendingWith from "./TrendingWith";
 import TrendingBox from "./TrendingBox";
 import NewsBox from "./NewsBox";
-import { useUser } from "@auth0/nextjs-auth0/client";
 
 function RightColumn() {
-  const { user, error, isLoading } = useUser();
-
   return (
     <>
       <div className="fix-sidebar">
@@ -23,11 +20,11 @@ function RightColumn() {
                 <h6 className="fw-bold text-body p-3 mb-0 border-bottom">
                   What&apos;s happening
                 </h6>
-                {/* <TrendingWith />
-                <HashBox />
-                <TrendingBox />
-                <TrendBox />
-                <NewsBox /> */}
+                {/* <TrendingWith /> */}
+                {/* <HashBox /> */}
+                {/* <TrendingBox /> */}
+                {/* <TrendBox /> */}
+                {/* <NewsBox /> */}
                 <Link href="#" className="text-decoration-none">
                   <div className="p-3">Show More</div>
                 </Link>

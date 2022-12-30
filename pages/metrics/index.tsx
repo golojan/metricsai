@@ -5,10 +5,8 @@ import TabsBar from "../../components/TabsBar";
 import AllPostFeeds from "./../../components/AllPostFeeds";
 import Layout from "../../components/Layout";
 import { withAuth } from "../../hocs/auth/withAuth";
-import { useUser } from "@auth0/nextjs-auth0/client";
 
 const Metrics: NextPage = () => {
-  const { user, error, isLoading } = useUser();
   return (
     <Layout>
       <main className="col col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
@@ -36,9 +34,7 @@ const Metrics: NextPage = () => {
               role="tabpanel"
               aria-labelledby="pills-people-tab"
             >
-              <h6 className="mb-3 fw-bold text-body">
-                People you can follow {JSON.stringify(user)}
-              </h6>
+              <h6 className="mb-3 fw-bold text-body">People you can follow</h6>
               <div className="bg-white rounded-4 overflow-hidden mb-4 shadow-sm">
                 <a
                   href="profile.html"

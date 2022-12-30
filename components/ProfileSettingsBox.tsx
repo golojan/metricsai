@@ -7,11 +7,10 @@ type UProps = {
 };
 
 const ProfileSettingsBox = (props: UProps) => {
-  const { user } = props;
+
   const [settings, setSettings] = React.useState<AuthUserInfo>({
-    ...user,
-    smsNotification: user.smsNotification,
-    emailNotification: user.emailNotification,
+    smsNotification: true,
+    emailNotification: false,
   });
 
   const [run, setRun] = useState(false);
