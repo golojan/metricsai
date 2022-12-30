@@ -1,6 +1,16 @@
 import React from "react";
+import { AuthUserInfo } from "../interfaces";
 
-function ProfileGoogleScholarBox() {
+type UProps = {
+  profile?: AuthUserInfo;
+};
+
+function ProfileGoogleScholarBox(props: UProps) {
+  const { profile } = props;
+  const [googleScholarId, setGoogleScholarId] = React.useState<string>(
+    profile?.googleScholarId || ""
+  );
+
   return (
     <>
       <div className="bg-white p-4 feed-item rounded-4 shadow-sm faq-page mb-3 relative">
@@ -28,6 +38,7 @@ function ProfileGoogleScholarBox() {
                   className="form-control rounded-5"
                   placeholder="XXXXXXXXXXXX"
                   id="googleScholarId"
+                  value={googleScholarId}
                 />
 
                 <label htmlFor="floatingPass">Google Citation ID</label>

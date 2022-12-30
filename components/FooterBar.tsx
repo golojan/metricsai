@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 function FooterBar() {
@@ -12,41 +13,41 @@ function FooterBar() {
             </span>
           </div>
           <div className="col-md-4 text-end">
-            <a
+            <Link
               target="_blank"
               href="#"
               className="btn social-btn btn-sm text-decoration-none"
             >
               <i className="icofont-facebook" />
-            </a>
-            <a
+            </Link>
+            <Link
               target="_blank"
               href="#"
               className="btn social-btn btn-sm text-decoration-none"
             >
               <i className="icofont-twitter" />
-            </a>
-            <a
+            </Link>
+            <Link
               target="_blank"
               href="#"
               className="btn social-btn btn-sm text-decoration-none"
             >
               <i className="icofont-linkedin" />
-            </a>
-            <a
+            </Link>
+            <Link
               target="_blank"
               href="#"
               className="btn social-btn btn-sm text-decoration-none"
             >
               <i className="icofont-youtube-play" />
-            </a>
-            <a
+            </Link>
+            <Link
               target="_blank"
               href="#"
               className="btn social-btn btn-sm text-decoration-none"
             >
               <i className="icofont-instagram" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>

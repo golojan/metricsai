@@ -7,7 +7,7 @@ type UProps = {
 
 function ProfileSchoolCodeBox(props: UProps) {
   const { profile } = props;
-  const [schoolCode, setSchoolCode] = React.useState(profile?.schoolCode);
+  const [schoolCode, setSchoolCode] = React.useState(profile?.schoolCode || "");
   return (
     <>
       <div className="bg-white p-4 feed-item rounded-4 shadow-sm faq-page mb-3">
@@ -26,10 +26,9 @@ function ProfileSchoolCodeBox(props: UProps) {
                 <input
                   type="text"
                   className="form-control rounded-5"
-                  value={schoolCode as string}
+                  value={schoolCode}
                   id="schoolCode"
                 />
-
                 <label htmlFor="floatingPass">UNIVERSITY CODE</label>
               </div>
               <div className="mb-2 w-full">

@@ -1,6 +1,15 @@
 import React from "react";
+import { AuthUserInfo } from "../interfaces";
 
-function ProfileScopusBox() {
+type UProps = {
+  profile?: AuthUserInfo;
+};
+
+function ProfileScopusBox(props: UProps) {
+  const { profile } = props;
+  const [scopusId, setScopusId] = React.useState<string>(
+    profile?.scopusId || ""
+  );
   return (
     <>
       <div className="bg-white p-4 feed-item rounded-4 shadow-sm faq-page mb-3 relative">
@@ -26,6 +35,7 @@ function ProfileScopusBox() {
                   className="form-control rounded-5"
                   placeholder="XXXXXXXXXX"
                   id="scopusId"
+                  value={scopusId}
                 />
 
                 <label htmlFor="floatingPass">Scopus Author ID</label>

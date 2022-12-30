@@ -10,6 +10,9 @@ type UProps = {
 
 const ProfileBasicBox = (props: UProps) => {
   const { profile } = props;
+  const [profileState, setProfileState] = React.useState<AuthUserInfo>({
+    ...profile,
+  });
 
   const handleProfileUpdate = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -48,7 +51,9 @@ const ProfileBasicBox = (props: UProps) => {
                 name="membership"
                 value={AccountTypes.GUEST}
                 defaultChecked={
-                  profile?.accountType === AccountTypes.GUEST ? true : false
+                  profileState?.accountType === AccountTypes.GUEST
+                    ? true
+                    : false
                 }
               />
               <label

@@ -1,6 +1,13 @@
 import React from "react";
+import { AuthUserInfo } from "../interfaces";
 
-function ProfileOrcidBox() {
+type UProps = {
+  profile?: AuthUserInfo;
+};
+
+function ProfileOrcidBox(props: UProps) {
+  const { profile } = props;
+  const [orcidId, setOrcidId] = React.useState<string>(profile?.orcidId || "");
   return (
     <>
       <div className="bg-white p-4 feed-item rounded-4 shadow-sm faq-page mb-3 relative">
@@ -26,6 +33,7 @@ function ProfileOrcidBox() {
                   className="form-control rounded-5"
                   placeholder="XXXXXXXXXXXXXXXX"
                   id="orcidId"
+                  value={orcidId}
                 />
 
                 <label htmlFor="floatingPass">Orcid Author ID</label>

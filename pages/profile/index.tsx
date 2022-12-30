@@ -21,12 +21,11 @@ const cookie = require("js-cookie");
 const HOC_ProfileAvatarBlock = withProfile(ProfileAvatarBlock);
 const HOC_ProfileBasicBox = withProfile(ProfileBasicBox);
 
-// const HOC_ProfileSettingsBox = withProfile(ProfileSettingsBox);
 const HOC_ProfileSchoolCodeBox = withProfile(ProfileSchoolCodeBox);
-
-// const HOC_ProfileSettingsBox = withProfile(ProfileAvatarBlock);
-// const HOC_ProfileAvatarBlock = withProfile(ProfileAvatarBlock);
-// const HOC_ProfileAvatarBlock = withProfile(ProfileAvatarBlock);
+const HOC_ProfileGoogleScholarBox = withProfile(ProfileGoogleScholarBox);
+const HOC_ProfileScopusBox = withProfile(ProfileScopusBox);
+const HOC_ProfileOrcidBox = withProfile(ProfileOrcidBox);
+const HOC_ProfileSettingsBox = withProfile(ProfileSettingsBox);
 
 type UProps = {
   profile: AuthUserInfo;
@@ -55,11 +54,11 @@ const Profile: NextPage<UProps> = (props) => {
               {JSON.stringify(profile)}
               <HOC_ProfileAvatarBlock />
               <HOC_ProfileBasicBox />
-              <HOC_ProfileSchoolCodeBox  />
-              {/* <ProfileGoogleScholarBox /> */}
-              {/* <ProfileScopusBox /> */}
-              {/* <ProfileOrcidBox /> */}
-              {/* <ProfileSettingsBox /> */}
+              <HOC_ProfileSchoolCodeBox />
+              <HOC_ProfileGoogleScholarBox />
+              <HOC_ProfileScopusBox />
+              <HOC_ProfileOrcidBox />
+              <HOC_ProfileSettingsBox />
             </div>
           </div>
         </main>

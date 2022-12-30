@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@material-design-icons/font": "^0.14.2",
     "@next/font": "13.1.1",
     "@rematch/core": "^2.2.0",
     "@types/node": "18.11.17",

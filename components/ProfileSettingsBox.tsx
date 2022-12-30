@@ -3,14 +3,17 @@ import { AuthUserInfo } from "../interfaces";
 const cookie = require("js-cookie");
 
 type UProps = {
-  user: AuthUserInfo;
+  profile?: AuthUserInfo;
 };
 
 const ProfileSettingsBox = (props: UProps) => {
-
-  const [settings, setSettings] = React.useState<AuthUserInfo>({
-    smsNotification: true,
-    emailNotification: false,
+  const { profile } = props;
+  const [settings, setSettings] = React.useState<{
+    smsNotification: boolean;
+    emailNotification: boolean;
+  }>({
+    smsNotification: profile?.smsNotification || false,
+    emailNotification: profile?.emailNotification || false,
   });
 
   const [run, setRun] = useState(false);
@@ -71,6 +74,7 @@ const ProfileSettingsBox = (props: UProps) => {
                   type="checkbox"
                   id="emailNotification"
                   name="emailNotification"
+                  checked={settings.emailNotification ? true : false}
                   value={1}
                   onChange={handleSettings}
                 />
@@ -84,6 +88,7 @@ const ProfileSettingsBox = (props: UProps) => {
                   type="checkbox"
                   id="smsNotification"
                   name="smsNotification"
+                  checked={settings.smsNotification ? true : false}
                   value={1}
                   onChange={handleSettings}
                 />

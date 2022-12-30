@@ -5,8 +5,7 @@ import Head from "next/head";
 // Import css files
 
 import "../styles/globals.scss";
-
-
+import "bootstrap/dist/css/bootstrap.min.css";
 import { Provider } from "react-redux";
 import { store } from "../store";
 

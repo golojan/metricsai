@@ -25,6 +25,9 @@ export interface AuthUserInfo {
   smsNotification?: boolean;
   emailNotification?: boolean;
   schoolCode?: string;
+  googleScholarId?: string;
+  scopusId?: string;
+  orcidId?: string;
 }
 
 export interface ResponseFunctions {
