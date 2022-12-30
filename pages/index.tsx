@@ -4,8 +4,6 @@ import StatusTextBox from "../components/StatusTextBox";
 import TabsBar from "../components/TabsBar";
 import AllPostFeeds from "./../components/AllPostFeeds";
 import Layout from "../components/Layout";
-import { withAuth } from "../hocs/auth/withAuth";
-import { useUser } from "@auth0/nextjs-auth0/client";
 
 const Home: NextPage = () => {
   return (
