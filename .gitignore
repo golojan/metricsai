@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+/html
 
 # testing
 /coverage
@@ -11,11 +12,9 @@
 # next.js
 /.next/
 /out/
-/html/
 
 # production
 /build
-/html
 
 # misc
 .DS_Store
