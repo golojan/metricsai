@@ -39,13 +39,13 @@ function LoginTabContents() {
           <header className="profile d-flex align-items-center">
             <img
               alt="#"
-              src="/img/rmate2.jpg"
+              src="/images/avatar/user.png"
               className="rounded-circle me-3"
             />
             <div>
               <span className="text-muted text_short">Welcome Guest</span>
               <h5 className="mb-0 text-dark">
-                <span className="fw-bold">Join the scoreboard!</span>
+                <span className="fw-bold">Join the Scoreboard!</span>
               </h5>
             </div>
           </header>
