@@ -43,7 +43,6 @@ const accountsScheme = new mongoose.Schema(
     smsNotification: { type: Boolean, default: false },
     emailNotification: { type: Boolean, default: false },
     schoolCode: { type: String },
-    
   },
 
   { timestamps: true }
