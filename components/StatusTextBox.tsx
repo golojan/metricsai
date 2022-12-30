@@ -64,7 +64,7 @@ function StatusTextBox() {
                   htmlFor="floatingTextarea2"
                   className="h6 text-muted mb-0"
                 >
-                  What's on your mind...
+                  What&apos;s on your mind...
                 </label>
               </div>
             </div>
