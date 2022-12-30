@@ -2,11 +2,12 @@ import React from "react";
 import { AuthUserInfo } from "../interfaces";
 
 type UProps = {
-  user: AuthUserInfo;
+  profile?: AuthUserInfo;
 };
 
 function ProfileSchoolCodeBox(props: UProps) {
-  const [schoolCode, setSchoolCode] = React.useState("");
+  const { profile } = props;
+  const [schoolCode, setSchoolCode] = React.useState(profile?.schoolCode);
   return (
     <>
       <div className="bg-white p-4 feed-item rounded-4 shadow-sm faq-page mb-3">
