@@ -21,7 +21,7 @@ function RightColumn() {
               <SearchBar />
               <div className="bg-white rounded-4 overflow-hidden shadow-sm mb-4">
                 <h6 className="fw-bold text-body p-3 mb-0 border-bottom">
-                  What's happening
+                  What&apos;s happening
                 </h6>
                 {/* <TrendingWith />
                 <HashBox />
