@@ -43,7 +43,7 @@ function LoginTabContents() {
               className="rounded-circle me-3"
             />
             <div>
-              <span className="text-muted text_short">Welcome Guest</span>
+              <span className="text-muted text_short">Welcome back Guest</span>
               <h5 className="mb-0 text-dark">
                 <span className="fw-bold">Join the Scoreboard!</span>
               </h5>

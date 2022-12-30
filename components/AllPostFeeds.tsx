@@ -5,10 +5,6 @@ function AllPostFeeds() {
   return (
     <>
       <PostFeed />
-      <PostFeed />
-      <PostFeed />
-      <PostFeed />
-      <PostFeed />
     </>
   );
 }

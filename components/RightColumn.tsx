@@ -8,15 +8,17 @@ import TrendingWith from "./TrendingWith";
 import TrendingBox from "./TrendingBox";
 import NewsBox from "./NewsBox";
 import AdBox from "./AdBox";
+const cookie = require("js-cookie");
 
 function RightColumn() {
+  const token = cookie.get("token");
   return (
     <>
       <div className="fix-sidebar">
         <div className="side-trend lg-none">
           <div className="sticky-sidebar2 mb-3">
             <>
-              <SearchBar />
+              {token ? <SearchBar /> : null}
               <AdBox />
               <div className="bg-white rounded-4 overflow-hidden shadow-sm mb-4">
                 <h6 className="fw-bold text-body p-3 mb-0 border-bottom">
