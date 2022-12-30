@@ -7,6 +7,7 @@ import HashBox from "./HashBox";
 import TrendingWith from "./TrendingWith";
 import TrendingBox from "./TrendingBox";
 import NewsBox from "./NewsBox";
+import AdBox from "./AdBox";
 
 function RightColumn() {
   return (
@@ -16,6 +17,7 @@ function RightColumn() {
           <div className="sticky-sidebar2 mb-3">
             <>
               <SearchBar />
+              <AdBox />
               <div className="bg-white rounded-4 overflow-hidden shadow-sm mb-4">
                 <h6 className="fw-bold text-body p-3 mb-0 border-bottom">
                   What&apos;s happening

@@ -14,7 +14,7 @@ export default async function handler(
   const catcher = (error: Error) => res.status(400).json({ error });
   const handleCase: ResponseFunctions = {
     POST: async (req: NextApiRequest, res: NextApiResponse) => {
-      const { username, password, membership } = req.body;
+      const { username, password, accountType } = req.body;
       const { Accounts, Schools } = await dbCon();
       await Accounts.findOne({
         email: username,
@@ -27,7 +27,7 @@ export default async function handler(
             );
             if (isPasswordValid) {
               //Password is valid//
-              if (membership === AccountTypes.GUEST) {
+              if (accountType === AccountTypes.GUEST) {
                 // Handle Guest Login
                 res.status(200).json({
                   status: true,
@@ -35,7 +35,7 @@ export default async function handler(
                 });
               }
 
-              if (membership === AccountTypes.STUDENT) {
+              if (accountType === AccountTypes.STUDENT) {
                 // Handle Student Login
                 res.status(200).json({
                   status: true,
@@ -43,7 +43,7 @@ export default async function handler(
                 });
               }
 
-              if (membership === AccountTypes.LECTURER) {
+              if (accountType === AccountTypes.LECTURER) {
                 // Handle Teacher Login
                 res.status(200).json({
                   status: true,

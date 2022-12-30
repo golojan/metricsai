@@ -4,10 +4,11 @@ import { AccountTypes, Gender } from "../interfaces/enums";
 
 function RegisterTabContents() {
   const [register, setRegister] = React.useState({
-    accountType: "GUEST",
+    accountType: AccountTypes.GUEST as string,
     firstname: "",
     lastname: "",
     gender: "",
+    birthday: "",
     email: "",
     password: "",
     confirmpassword: "",
@@ -42,7 +43,7 @@ function RegisterTabContents() {
           <header className="profile d-flex align-items-center">
             <img
               alt="#"
-              src="/img/rmate2.jpg"
+              src="/images/avatar/user.png"
               className="rounded-circle me-3"
             />
             <div>
@@ -62,8 +63,8 @@ function RegisterTabContents() {
                     type="radio"
                     required={true}
                     className="btn-check"
-                    id="guest"
-                    name="membership"
+                    id="reg_guest"
+                    name="accountType"
                     value={AccountTypes.GUEST}
                     defaultChecked
                     onChange={(e) =>
@@ -71,7 +72,7 @@ function RegisterTabContents() {
                     }
                   />
                   <label
-                    htmlFor="guest"
+                    htmlFor="reg_guest"
                     className="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between"
                   >
                     <span className="text-start d-grid">
@@ -88,15 +89,15 @@ function RegisterTabContents() {
                     type="radio"
                     required={true}
                     className="btn-check"
-                    id="student"
-                    name="membership"
+                    id="reg_student"
+                    name="accountType"
                     value={AccountTypes.STUDENT}
                     onChange={(e) =>
                       setRegister({ ...register, accountType: e.target.value })
                     }
                   />
                   <label
-                    htmlFor="student"
+                    htmlFor="reg_student"
                     className="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between"
                   >
                     <span className="text-start d-grid">
@@ -113,15 +114,15 @@ function RegisterTabContents() {
                     type="radio"
                     required={true}
                     className="btn-check"
-                    id="lecturer"
-                    name="membership"
+                    id="reg_lecturer"
+                    name="accountType"
                     value={AccountTypes.LECTURER}
                     onChange={(e) =>
                       setRegister({ ...register, accountType: e.target.value })
                     }
                   />
                   <label
-                    htmlFor="lecturer"
+                    htmlFor="reg_lecturer"
                     className="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between"
                   >
                     <span className="text-start d-grid">
@@ -174,66 +175,70 @@ function RegisterTabContents() {
                     </div>
                   </div>
 
-                  <label className="mb-2 text-muted ">GENDER</label>
-                  <div className="d-flex align-items-center mb-3 px-0">
-                    <div className="form-check">
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        required={true}
-                        name="gender"
-                        id="male"
-                        value={Gender.MALE}
-                        onChange={(e) =>
-                          setRegister({
-                            ...register,
-                            gender: e.target.value,
-                          })
-                        }
-                      />
-                      <label className="form-check-label" htmlFor="male">
-                        Male
-                      </label>
+                  <div className="row">
+                    <div className="col-6">
+                      <label className="mb-4 text-muted ">GENDER</label>
+                      <div className="d-flex align-items-center mb-3 px-0">
+                        <div className="form-check mx-3 w-full">
+                          <input
+                            className="form-check-input"
+                            type="radio"
+                            required={true}
+                            name="gender"
+                            id="male"
+                            value={Gender.MALE}
+                            onChange={(e) =>
+                              setRegister({
+                                ...register,
+                                gender: e.target.value,
+                              })
+                            }
+                          />
+                          <label className="form-check-label" htmlFor="male">
+                            Male
+                          </label>
+                        </div>
+                        <div className="form-check mx-3 w-full">
+                          <input
+                            className="form-check-input"
+                            type="radio"
+                            required={true}
+                            name="gender"
+                            id="female"
+                            value={Gender.FEMALE}
+                            onChange={(e) =>
+                              setRegister({
+                                ...register,
+                                gender: e.target.value,
+                              })
+                            }
+                          />
+                          <label className="form-check-label" htmlFor="female">
+                            Female
+                          </label>
+                        </div>
+                      </div>
                     </div>
-                    <div className="form-check mx-3">
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        required={true}
-                        name="gender"
-                        id="female"
-                        value={Gender.FEMALE}
-                        onChange={(e) =>
-                          setRegister({
-                            ...register,
-                            gender: e.target.value,
-                          })
-                        }
-                      />
-                      <label className="form-check-label" htmlFor="female">
-                        Female
-                      </label>
-                    </div>
-                    <div className="form-check">
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        disabled={true}
-                        name="gender"
-                        id="not"
-                        value={Gender.NOTSAY}
-                        onChange={(e) =>
-                          setRegister({
-                            ...register,
-                            gender: e.target.value,
-                          })
-                        }
-                      />
-                      <label className="form-check-label" htmlFor="not">
-                        Prefer not to say
-                      </label>
+                    <div className="col-6">
+                      <label className="mb-2 text-muted ">DATE OF BIRTH</label>
+                      <div className="form-floating mb-3 d-flex align-items-center">
+                        <input
+                          type="date"
+                          className="form-control rounded-5"
+                          id="birthdat"
+                          placeholder="DATE OF BIRTH"
+                          onChange={(e) =>
+                            setRegister({
+                              ...register,
+                              birthday: e.target.value,
+                            })
+                          }
+                        />
+                        <label htmlFor="birthdat">DATE OF BIRTH</label>
+                      </div>
                     </div>
                   </div>
+
                   <div className="row">
                     <div className="col-12">
                       <div className="form-floating mb-3 d-flex align-items-end">

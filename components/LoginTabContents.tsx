@@ -7,7 +7,7 @@ function LoginTabContents() {
   const [login, setLogin] = React.useState({
     username: "",
     password: "",
-    membership: AccountTypes.GUEST as string,
+    accountType: AccountTypes.GUEST as string,
   });
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -59,16 +59,16 @@ function LoginTabContents() {
                     type="radio"
                     required={true}
                     className="btn-check"
-                    id="guest"
-                    name="membership"
+                    id="login_guest"
+                    name="accountType"
                     value={AccountTypes.GUEST}
                     defaultChecked
                     onChange={(e) =>
-                      setLogin({ ...login, membership: e.target.value })
+                      setLogin({ ...login, accountType: e.target.value })
                     }
                   />
                   <label
-                    htmlFor="guest"
+                    htmlFor="login_guest"
                     className="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between"
                   >
                     <span className="text-start d-grid">
@@ -85,15 +85,15 @@ function LoginTabContents() {
                     type="radio"
                     required={true}
                     className="btn-check"
-                    id="student"
-                    name="membership"
+                    id="login_student"
+                    name="accountType"
                     value={AccountTypes.STUDENT}
                     onChange={(e) =>
-                      setLogin({ ...login, membership: e.target.value })
+                      setLogin({ ...login, accountType: e.target.value })
                     }
                   />
                   <label
-                    htmlFor="student"
+                    htmlFor="login_student"
                     className="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between"
                   >
                     <span className="text-start d-grid">
@@ -110,15 +110,15 @@ function LoginTabContents() {
                     type="radio"
                     required={true}
                     className="btn-check"
-                    id="lecturer"
-                    name="membership"
+                    id="login_lecturer"
+                    name="accountType"
                     value={AccountTypes.LECTURER}
                     onChange={(e) =>
-                      setLogin({ ...login, membership: e.target.value })
+                      setLogin({ ...login, accountType: e.target.value })
                     }
                   />
                   <label
-                    htmlFor="lecturer"
+                    htmlFor="login_lecturer"
                     className="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between"
                   >
                     <span className="text-start d-grid">
