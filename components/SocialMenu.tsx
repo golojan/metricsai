@@ -1,16 +1,17 @@
+import Link from "next/link";
 import React from "react";
 
 function SocialMenu() {
   return (
     <>
       <div className="web-none d-flex align-items-center px-3 pt-3">
-        <a href="/" className="text-decoration-none">
+        <Link href="/" className="text-decoration-none">
           <img
             src="img/logo.png"
             className="img-fluid logo-mobile"
             alt="brand-logo"
           />
-        </a>
+        </Link>
         <button
           className="ms-auto btn btn-primary ln-0"
           type="button"
