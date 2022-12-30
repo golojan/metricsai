@@ -1,6 +1,28 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import type { AppProps } from "next/app";
+import Script from "next/script";
+import Head from "next/head";
+
+// Import css files
+
+import "../styles/globals.scss";
+import { Provider } from "react-redux";
+import { store } from "../store";
+import { UserProvider } from "@auth0/nextjs-auth0/client";
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <>
+      <Head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+      <Script src="vendor/jquery/jquery.min.js" />
+      <Script src="vendor/bootstrap/js/bootstrap.bundle.min.js" />
+      <UserProvider>
+        <Provider store={store}>
+          <Component {...pageProps} />
+        </Provider>
+      </UserProvider>
+    </>
+  );
 }
