@@ -71,7 +71,7 @@ const ProfileBasicBox = (props: UProps) => {
                 className="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between"
               >
                 <span className="text-start d-grid">
-                  <small className="ln-18">I'm a Guest</small>
+                  <small className="ln-18">I am a Guest</small>
                 </span>
                 <span className="material-icons text-muted md-20">
                   check_circle
@@ -99,7 +99,7 @@ const ProfileBasicBox = (props: UProps) => {
                 className="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between"
               >
                 <span className="text-start d-grid">
-                  <small className="ln-18">I'm a Student</small>
+                  <small className="ln-18">I am a Student</small>
                 </span>
                 <span className="material-icons text-muted md-20">
                   check_circle
@@ -127,7 +127,7 @@ const ProfileBasicBox = (props: UProps) => {
                 className="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between"
               >
                 <span className="text-start d-grid">
-                  <small className="ln-18">I'm a Lecturer</small>
+                  <small className="ln-18">I am a Lecturer</small>
                 </span>
                 <span className="material-icons text-muted md-20">
                   check_circle
