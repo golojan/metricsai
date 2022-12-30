@@ -20,9 +20,8 @@ function MobileSideBar() {
             </Link>
           </div>
           <ul className="navbar-nav justify-content-end flex-grow-1">
-
             <li className="nav-item">
-              <a href="/" className="nav-link active">
+              <Link href="/" className="nav-link active">
                 <span className="material-icons me-3">
                   <img
                     src="img/logo.png"
@@ -33,42 +32,42 @@ function MobileSideBar() {
                   />
                 </span>
                 <span>Metrics</span>
-              </a>
+              </Link>
             </li>
 
             <li className="nav-item">
-              <a href="/" className="nav-link">
+              <Link href="/" className="nav-link">
                 <span className="material-icons me-3">
                   local_fire_department
                 </span>
                 <span>Trending</span>
-              </a>
+              </Link>
             </li>
 
             <li className="nav-item">
-              <a href="/" className="nav-link">
+              <Link href="/" className="nav-link">
                 <span className="material-icons me-3">house</span>
                 <span>Feed</span>
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="profile.html" className="nav-link">
+              <Link href="profile.html" className="nav-link">
                 <span className="material-icons me-3">account_circle</span>
                 <span>Profile</span>
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="explore.html" className="nav-link">
+              <Link href="explore.html" className="nav-link">
                 <span className="material-icons me-3">explore</span>
                 <span>Explore</span>
-              </a>
+              </Link>
             </li>
 
             <li className="nav-item">
-              <a href="/" className="nav-link">
+              <Link href="/" className="nav-link">
                 <span className="material-icons me-3">logout</span>
                 <span>Logout</span>
-              </a>
+              </Link>
             </li>
 
             {/* <li className="nav-item dropdown">
@@ -122,14 +121,14 @@ function MobileSideBar() {
             </li> */}
           </ul>
         </div>
-        <a
+        <Link
           href="#"
           className="btn btn-primary w-100 text-decoration-none rounded-4 py-3 fw-bold text-uppercase m-0"
           data-bs-toggle="modal"
           data-bs-target="#signModal"
         >
           Sign In +
-        </a>
+        </Link>
       </div>
     </>
   );
