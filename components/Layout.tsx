@@ -14,12 +14,15 @@ import MobilePageSideBar from "./MobilePageSideBar";
 import FixedPageSideBar from "./FixedPageSideBar";
 import RightPageColumn from "./RightPageColumn";
 
+import { useAtom } from "jotai";
+import { profileAtom } from "../store";
+
 interface Props {
   children: React.ReactNode;
 }
 
 function Layout({ children }: Props) {
-  const token = cookie.get("token");
+  const [profile] = useAtom(profileAtom);
   const isAuth = hasAuth();
   return (
     <>

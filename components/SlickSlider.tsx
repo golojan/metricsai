@@ -1,8 +1,12 @@
 import Link from "next/link";
 import React from "react";
 import Slider from "react-slick";
+import { useAtom } from "jotai";
+import { profileAtom } from "../store";
 
 function SlickSlider() {
+  const [profile] = useAtom(profileAtom);
+
   const settings = {
     swipe: true,
     touchMove: true,

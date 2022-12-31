@@ -4,23 +4,12 @@ import Layout from "../../components/Layout";
 import { withAuth } from "./../../hocs/auth/withAuth";
 import { NextPage } from "next";
 
-import { useAtom } from "jotai";
-import { tokenAtom } from "./../../store/index";
 
-import { AuthUserInfo } from "../../interfaces";
-import { getProfileInfo } from "./../../libs/queries";
 import { AccountTypes, Gender } from "../../interfaces/enums";
+import { AuthUserInfo } from "../../interfaces";
 
-const Profile: NextPage = () => {
-  //
-  const [token] = useAtom(tokenAtom);
-  const [profile, setProfile] = useState<AuthUserInfo>({});
-
-  useEffect(() => {
-    getProfileInfo(token).then((res: AuthUserInfo) => {
-      setProfile(res);
-    });
-  }, [token]);
+const Profile: NextPage = ({ user, token }: any) => {
+  const [profile, setProfile] = useState<AuthUserInfo>({ ...user });
 
   const handleProfileUpdate = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

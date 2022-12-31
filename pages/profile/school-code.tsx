@@ -21,7 +21,7 @@ const SchoolCode: NextPage = () => {
     getProfileInfo(token).then((res: AuthUserInfo) => {
       setProfile(res);
     });
-  }, [token]);
+  });
 
   const verifySchoolCode = async (e: React.SyntheticEvent) => {
     e.preventDefault();

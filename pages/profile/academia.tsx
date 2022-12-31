@@ -8,21 +8,13 @@ import { useAtom } from "jotai";
 import { tokenAtom } from "../../store/index";
 
 import { AuthUserInfo } from "../../interfaces";
-import { getProfileInfo } from "../../libs/queries";
 const cookie = require("js-cookie");
 
-const Academia: NextPage = () => {
-  const [token] = useAtom(tokenAtom);
+const Academia: NextPage = ({ user, token }: any) => {
+  const [, setToken] = useAtom(tokenAtom);
   const [profile, setProfile] = useState<AuthUserInfo>({
-    googleScholarId: "",
-    scopusId: "",
-    orcidId: "",
+    ...user,
   });
-  useEffect(() => {
-    getProfileInfo(token).then((res: AuthUserInfo) => {
-      setProfile(res);
-    });
-  }, [token]);
 
   const saveGoogleScholarId = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

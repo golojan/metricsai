@@ -46,10 +46,7 @@ export const authlogout = () => {
 
 export const withAuth = (WrappedComponent: any) => {
   const Wrapper = (props: any) => {
-    const [profile, setProfile] = useAtom(profileAtom);
-    const [token, setToken] = useAtom(tokenAtom);
-
-    const [done, setDone] = useState(false);
+    const token = cookie.get("token");
     const syncLogout = (event: any) => {
       if (event.key === "logout") {
         console.log("logged out from storage!");
@@ -58,18 +55,30 @@ export const withAuth = (WrappedComponent: any) => {
     };
     useEffect(() => {
       window.addEventListener("storage", syncLogout);
+      if (!token) {
+        Router.push("/auth");
+      }
       return () => {
         window.removeEventListener("storage", syncLogout);
         window.localStorage.removeItem("logout");
       };
-    });
+    }, [token]);
     return <WrappedComponent {...props} />;
   };
+
   Wrapper.getInitialProps = async (ctx: any) => {
+    const token = auth(ctx);
+    const response = await fetch(
+      `${process.env.DOMAIN}/api/accounts/${token}/profile`
+    );
+    const result = await response.json();
+    const { data: user } = result;
     const componentProps =
       WrappedComponent.getInitialProps &&
       (await WrappedComponent.getInitialProps(ctx));
-    return { ...componentProps };
+    return { ...componentProps, user, token };
   };
+
   return Wrapper;
+
 };

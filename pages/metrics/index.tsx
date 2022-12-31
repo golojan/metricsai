@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { NextPage } from "next";
 import SlickSlider from "../../components/SlickSlider";
 import StatusTextBox from "../../components/StatusTextBox";
@@ -6,7 +7,18 @@ import AllPostFeeds from "./../../components/AllPostFeeds";
 import Layout from "../../components/Layout";
 import { withAuth } from "../../hocs/auth/withAuth";
 
-const Metrics: NextPage = () => {
+import { useAtom } from "jotai";
+import { profileAtom } from "../../store/index";
+
+const Metrics: NextPage = ({ user, token }: any) => {
+  const [profile, setProfile] = useAtom(profileAtom);
+  useEffect(() => {
+    setProfile(user);
+    return () => {
+      true;
+    };
+  }, [token]);
+
   return (
     <Layout>
       <main className="col col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">

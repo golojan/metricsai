@@ -18,7 +18,7 @@ const Notifications: NextPage = () => {
     getProfileInfo(token).then((res: AuthUserInfo) => {
       setProfile(res);
     });
-  }, [token]);
+  });
 
   const handleSettings = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {

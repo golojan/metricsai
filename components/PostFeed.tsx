@@ -1,6 +1,9 @@
 import React from "react";
+import { useAtom } from "jotai";
+import { profileAtom } from "../store";
 
 function PostFeed() {
+  const [profile] = useAtom(profileAtom);
   return (
     <>
       <div className="bg-white p-3 feed-item rounded-4 mb-3 shadow-sm">
