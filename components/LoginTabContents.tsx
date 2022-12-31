@@ -10,7 +10,7 @@ function LoginTabContents() {
     accountType: AccountTypes.GUEST as string,
   });
 
-  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleLogin = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     const response = await fetch("/api/accounts/login", {
       method: "POST",
