@@ -1,7 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { dbCon } from "../../../../models";
 import { ResponseFunctions } from "../../../../interfaces";
-import console from "console";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const method: keyof ResponseFunctions = req.method as keyof ResponseFunctions;
@@ -10,15 +9,16 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const handleCase: ResponseFunctions = {
     POST: async (req: NextApiRequest, res: NextApiResponse) => {
       const { token } = req.query;
+      const { googleScholarId, scopusId, orcidId } = req.body;
 
-      const { smsNotification, emailNotification } = req.body;
       const { Accounts } = await dbCon();
 
       const saved = await Accounts.updateOne(
         { _id: token },
         {
-          smsNotification: smsNotification,
-          emailNotification: emailNotification,
+          googleScholarId: googleScholarId,
+          scopusId: scopusId,
+          orcidId: orcidId,
         }
       ).catch(catcher);
       if (saved) {

@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { authlogout } from "../hocs/auth/withAuth";
 
 function MobileSideBar() {
   return (
@@ -10,7 +11,7 @@ function MobileSideBar() {
         id="offcanvasExample"
       >
         <div className="sidebar-nav mb-3">
-          <div className="pb-4 mb-4 d-none">
+          <div className="pb-4 mb-4">
             <Link href="/" className="text-decoration-none">
               <img
                 src="img/logo.png"
@@ -46,32 +47,20 @@ function MobileSideBar() {
 
             <li className="nav-item">
               <Link href="/" className="nav-link">
-                <span className="material-icons me-3">house</span>
-                <span>Feed</span>
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link href="profile.html" className="nav-link">
-                <span className="material-icons me-3">account_circle</span>
-                <span>Profile</span>
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link href="explore.html" className="nav-link">
                 <span className="material-icons me-3">explore</span>
                 <span>Explore</span>
               </Link>
             </li>
 
-            <li className="nav-item">
-              <Link href="/" className="nav-link">
-                <span className="material-icons me-3">logout</span>
-                <span>Logout</span>
+            <li>
+              <Link className="dropdown-item rounded-3 px-2 py-1 my-1" href="/">
+                <span className="material-icons me-3">school</span>
+                Academia
               </Link>
             </li>
 
-            {/* <li className="nav-item dropdown">
-              <a
+            <li className="nav-item dropdown">
+              <Link
                 className="nav-link dropdown-toggle"
                 href="#"
                 id="offcanvasNavbarDropdown"
@@ -79,56 +68,64 @@ function MobileSideBar() {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <span className="material-icons me-3">web</span> Pages
-              </a>
+                <span className="material-icons me-3">account_circle</span>
+                <span>Profile & Academia</span>
+              </Link>
               <ul
                 className="dropdown-menu px-2 py-1 mb-2"
                 aria-labelledby="offcanvasNavbarDropdown"
               >
-                <li>
-                  <a
+                <li className="ml-5">
+                  <Link
                     className="dropdown-item rounded-3 px-2 py-1 my-1"
-                    href="contact.html"
-                  >
-                    Contact
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="dropdown-item rounded-3 px-2 py-1 my-1"
-                    href="faq.html"
-                  >
-                    FAQ
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="dropdown-item rounded-3 px-2 py-1 my-1"
-                    href="404.html"
-                  >
-                    404 Error
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="dropdown-item rounded-3 px-2 py-1 my-1"
-                    href="edit-profile.html"
+                    href="/profile"
                   >
                     Edit Profile
-                  </a>
+                  </Link>
+                </li>
+                <li className="ml-5">
+                  <Link
+                    className="dropdown-item rounded-3 px-2 py-1 my-1"
+                    href="/profile/school-code"
+                  >
+                    Verify Your School
+                  </Link>
+                </li>
+                <li className="ml-5">
+                  <Link
+                    className="dropdown-item rounded-3 px-2 py-1 my-1"
+                    href="/profile/academia"
+                  >
+                    Google Presence
+                  </Link>
+                </li>
+                <li className="ml-5">
+                  <Link
+                    className="dropdown-item rounded-3 px-2 py-1 my-1"
+                    href="/profile/academia"
+                  >
+                    Academia Profile
+                  </Link>
+                </li>
+                <li className="ml-5">
+                  <Link
+                    className="dropdown-item rounded-3 px-2 py-1 my-1"
+                    href="/profile/notifications"
+                  >
+                    Notifications
+                  </Link>
                 </li>
               </ul>
-            </li> */}
+            </li>
+
+            <li className="nav-item">
+              <Link href={"#"} onClick={authlogout} className="nav-link">
+                <span className="material-icons me-3">logout</span>
+                <span>Logout</span>
+              </Link>
+            </li>
           </ul>
         </div>
-        <Link
-          href="#"
-          className="btn btn-primary w-100 text-decoration-none rounded-4 py-3 fw-bold text-uppercase m-0"
-          data-bs-toggle="modal"
-          data-bs-target="#signModal"
-        >
-          Sign In +
-        </Link>
       </div>
     </>
   );

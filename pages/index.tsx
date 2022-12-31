@@ -1,9 +1,9 @@
 import { NextPage } from "next";
 import AllPostFeeds from "./../components/AllPostFeeds";
-import Layout from "../components/Layout";
 import SearchBarLarge from "./../components/SearchBarLarge";
 import { useAtom } from "jotai";
 import { tokenAtom } from "./../store/index";
+import Layout from "../components/Layout";
 
 const Home: NextPage = () => {
   const [token] = useAtom(tokenAtom);

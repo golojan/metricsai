@@ -8,44 +8,40 @@ import FixedSideBar from "./FixedSideBar";
 import RightColumn from "./RightColumn";
 
 const cookie = require("js-cookie");
-import useSWR from "swr";
 
-import { getUserInfo } from "../libs/queries";
-import { useRouter } from "next/router";
+import { hasAuth } from "../hocs/auth/withAuth";
+import MobilePageSideBar from "./MobilePageSideBar";
+import FixedPageSideBar from "./FixedPageSideBar";
+import RightPageColumn from "./RightPageColumn";
 
 interface Props {
   children: React.ReactNode;
 }
+
 function Layout({ children }: Props) {
-  const router = useRouter();
   const token = cookie.get("token");
-  const { data: Profile, error } = useSWR(
-    `/api/accounts/${token}/profile`,
-    getUserInfo
-  );
+  const isAuth = hasAuth();
   return (
     <>
       <Head>
-        <title>Metrics AI</title>
+        <title>Metrics AI | School Ranking System</title>
       </Head>
       <TopBar />
       <SocialMenu />
-
       <div className="py-4">
         <div className="container">
           <div className="row position-relative">
             {children}
             <aside className="col col-xl-3 order-xl-1 col-lg-6 order-lg-2 col-md-6 col-sm-6 col-12">
-              <MobileSideBar />
-              <FixedSideBar />
+              {isAuth ? <MobileSideBar /> : <MobilePageSideBar />}
+              {isAuth ? <FixedSideBar /> : <FixedPageSideBar />}
             </aside>
             <aside className="col col-xl-3 order-xl-3 col-lg-6 order-lg-3 col-md-6 col-sm-6 col-12">
-              <RightColumn />
+              {isAuth ? <RightColumn /> : <RightPageColumn />}
             </aside>
           </div>
         </div>
       </div>
-
       <div className="py-3 bg-white footer-copyright">
         <FooterBar />
       </div>

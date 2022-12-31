@@ -22,8 +22,8 @@ export interface AuthUserInfo {
   gender?: string;
   mobile?: string;
   birthday?: string;
-  smsNotification?: number;
-  emailNotification?: number;
+  smsNotification?: boolean;
+  emailNotification?: boolean;
   schoolCode?: string;
   googleScholarId?: string;
   scopusId?: string;

@@ -1,6 +1,6 @@
 import React from "react";
-import Layout from "../../components/Layout";
 import LoginTabContents from "../../components/LoginTabContents";
+import Layout from "../../components/Layout";
 import RegisterTabContents from "../../components/RegisterTabContents";
 import ResetTabContents from "../../components/ResetTabContents";
 import AuthTabsBar from "./../../components/AuthTabsBar";

@@ -30,6 +30,7 @@ const accountsScheme = new mongoose.Schema(
       type: String,
       enum: Object.values(Gender),
     },
+    birthday: { type: String },
     otp: {
       enabled: { type: Boolean, default: true },
       code: String,
@@ -40,8 +41,8 @@ const accountsScheme = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    smsNotification: { type: Number, default: 0 },
-    emailNotification: { type: Number, default: 0 },
+    smsNotification: { type: Boolean, default: false },
+    emailNotification: { type: Boolean, default: false },
     schoolCode: { type: String },
     googleScholarId: { type: String },
     scopusId: { type: String },
