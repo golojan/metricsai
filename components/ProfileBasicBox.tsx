@@ -3,11 +3,16 @@ import { AuthUserInfo } from "../interfaces";
 import { AccountTypes, Gender } from "../interfaces/enums";
 
 import { useAtom } from "jotai";
-import { profileAtom, tokenAtom } from "../store/index";
+import { tokenAtom } from "../store/index";
+import useSWR from "swr";
+import { fetchUserInfo } from "../libs/queries";
 
 const ProfileBasicBox = () => {
-  const [profile] = useAtom<AuthUserInfo>(profileAtom);
-  const [token] = useAtom(tokenAtom);
+  const [token] = useAtom<string>(tokenAtom);
+  const { data: profile } = useSWR<AuthUserInfo>(
+    "/api/accounts/token/info",
+    fetchUserInfo
+  );
 
   const [profileState, setProfileState] = React.useState<AuthUserInfo>({
     ...profile,

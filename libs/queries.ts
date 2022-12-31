@@ -1,3 +1,12 @@
+const cookie = require("js-cookie");
+
+export const fetchUserInfo = () => {
+  const token = cookie.get("token");
+  return fetch(`/api/accounts/${token}/info`)
+    .then((response) => response.json())
+    .then((data) => data.data);
+};
+
 export const getProfileInfo = async (email: string) => {
   const response = await fetch(`/api/accounts/${email}/info`);
   const membership = await response.json();

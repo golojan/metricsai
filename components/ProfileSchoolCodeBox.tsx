@@ -1,12 +1,15 @@
 import React from "react";
 import { AuthUserInfo } from "../interfaces";
 
-import { useAtom } from "jotai";
-import { profileAtom } from "../store/index";
+import useSWR from "swr";
+import { fetchUserInfo } from "../libs/queries";
 
 function ProfileSchoolCodeBox() {
-  const [profile] = useAtom<AuthUserInfo>(profileAtom);
-  const [schoolCode, setSchoolCode] = React.useState(profile?.schoolCode || "");
+  const { data: profile } = useSWR<AuthUserInfo>(
+    "/api/accounts/token/info",
+    fetchUserInfo
+  );
+  const [schoolCode, setSchoolCode] = React.useState(profile?.schoolCode);
   return (
     <>
       <div className="bg-white p-4 feed-item rounded-4 shadow-sm faq-page mb-3">

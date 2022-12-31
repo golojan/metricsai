@@ -1,11 +1,13 @@
 import React from "react";
 import { AuthUserInfo } from "../interfaces";
-import { useAtom } from "jotai";
-import { profileAtom } from "../store/index";
-
+import useSWR from "swr";
+import { fetchUserInfo } from "../libs/queries";
 
 function ProfileGoogleScholarBox() {
-  const [profile] = useAtom<AuthUserInfo>(profileAtom);
+  const { data: profile } = useSWR<AuthUserInfo>(
+    "/api/accounts/token/info",
+    fetchUserInfo
+  );
   const [googleScholarId, setGoogleScholarId] = React.useState<string>(
     profile?.googleScholarId || ""
   );

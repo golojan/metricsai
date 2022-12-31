@@ -43,6 +43,7 @@ const Profile: NextPage = (props) => {
             <div className="feeds">
               <ProfileAvatarBlock />
               <ProfileBasicBox />
+
               <ProfileSchoolCodeBox />
               <ProfileGoogleScholarBox />
               <ProfileScopusBox />

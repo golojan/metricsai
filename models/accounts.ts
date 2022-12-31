@@ -40,11 +40,13 @@ const accountsScheme = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    smsNotification: { type: Boolean, default: false },
-    emailNotification: { type: Boolean, default: false },
+    smsNotification: { type: Number, default: 0 },
+    emailNotification: { type: Number, default: 0 },
     schoolCode: { type: String },
+    googleScholarId: { type: String },
+    scopusId: { type: String },
+    orcidId: { type: String },
   },
-
   { timestamps: true }
 );
 

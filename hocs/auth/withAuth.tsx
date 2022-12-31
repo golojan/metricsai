@@ -5,7 +5,7 @@ const cookie = require("js-cookie");
 
 import { getUserInfo } from "../../libs/queries";
 import { useAtom } from "jotai";
-import { tokenAtom } from "../../store";
+import { tokenAtom, profileAtom } from "../../store";
 
 // Login & Create session for a given minutes time
 export const authLogin = (token: string) => {
@@ -46,6 +46,10 @@ export const authlogout = () => {
 
 export const withAuth = (WrappedComponent: any) => {
   const Wrapper = (props: any) => {
+    const [profile, setProfile] = useAtom(profileAtom);
+    const [token, setToken] = useAtom(tokenAtom);
+
+    const [done, setDone] = useState(false);
     const syncLogout = (event: any) => {
       if (event.key === "logout") {
         console.log("logged out from storage!");
