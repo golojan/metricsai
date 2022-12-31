@@ -1,12 +1,11 @@
 import React from "react";
 import { AuthUserInfo } from "../interfaces";
 
-type UProps = {
-  profile?: AuthUserInfo;
-};
+import { useAtom } from "jotai";
+import { profileAtom } from "../store/index";
 
-function ProfileSchoolCodeBox(props: UProps) {
-  const { profile } = props;
+function ProfileSchoolCodeBox() {
+  const [profile] = useAtom<AuthUserInfo>(profileAtom);
   const [schoolCode, setSchoolCode] = React.useState(profile?.schoolCode || "");
   return (
     <>
@@ -21,13 +20,14 @@ function ProfileSchoolCodeBox(props: UProps) {
         </div>
         <div className="row justify-content-center">
           <div className="col-lg-12">
-            <form action="profile.html">
+            <form>
               <div className="form-floating mb-1 d-flex align-items-center">
                 <input
                   type="text"
                   className="form-control rounded-5"
                   value={schoolCode}
                   id="schoolCode"
+                  onChange={(e) => setSchoolCode(e.target.value)}
                 />
                 <label htmlFor="floatingPass">UNIVERSITY CODE</label>
               </div>

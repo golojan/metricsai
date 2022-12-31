@@ -1,12 +1,11 @@
 import React from "react";
 import { AuthUserInfo } from "../interfaces";
+import { useAtom } from "jotai";
+import { profileAtom } from "../store/index";
 
-type UProps = {
-  profile?: AuthUserInfo;
-};
 
-function ProfileGoogleScholarBox(props: UProps) {
-  const { profile } = props;
+function ProfileGoogleScholarBox() {
+  const [profile] = useAtom<AuthUserInfo>(profileAtom);
   const [googleScholarId, setGoogleScholarId] = React.useState<string>(
     profile?.googleScholarId || ""
   );
@@ -31,7 +30,7 @@ function ProfileGoogleScholarBox(props: UProps) {
         </div>
         <div className="row justify-content-center">
           <div className="col-lg-12">
-            <form action="profile.html">
+            <form>
               <div className="form-floating mb-1 d-flex align-items-center">
                 <input
                   type="text"
@@ -39,6 +38,7 @@ function ProfileGoogleScholarBox(props: UProps) {
                   placeholder="XXXXXXXXXXXX"
                   id="googleScholarId"
                   value={googleScholarId}
+                  onChange={(e) => setGoogleScholarId(e.target.value)}
                 />
 
                 <label htmlFor="floatingPass">Google Citation ID</label>

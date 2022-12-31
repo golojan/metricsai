@@ -1,16 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Router from "next/router";
 import nextCookie from "next-cookies";
 const cookie = require("js-cookie");
 
-import { Dispatch } from "../../store";
-import { useDispatch } from "react-redux";
-
-import { RootState } from "../../store";
-import { useSelector } from "react-redux";
-
 import { getUserInfo } from "../../libs/queries";
-import useSWR from "swr";
+import { useAtom } from "jotai";
+import { tokenAtom } from "../../store";
 
 // Login & Create session for a given minutes time
 export const authLogin = (token: string) => {
@@ -51,29 +46,19 @@ export const authlogout = () => {
 
 export const withAuth = (WrappedComponent: any) => {
   const Wrapper = (props: any) => {
-    const dispatch = useDispatch<Dispatch>();
     const syncLogout = (event: any) => {
       if (event.key === "logout") {
         console.log("logged out from storage!");
         Router.push("/auth");
       }
     };
-
-    const token = cookie.get("token");
     useEffect(() => {
       window.addEventListener("storage", syncLogout);
-      // const token = cookie.get("token");
-      if (token) {
-        dispatch.accounts.setToken(token);
-      } else {
-        authlogout();
-      }
       return () => {
         window.removeEventListener("storage", syncLogout);
         window.localStorage.removeItem("logout");
       };
-    }, [dispatch.settings]);
-
+    });
     return <WrappedComponent {...props} />;
   };
   Wrapper.getInitialProps = async (ctx: any) => {

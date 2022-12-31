@@ -1,7 +1,10 @@
 import Link from "next/link";
 import React from "react";
+import { useAtom } from "jotai";
+import { profileAtom } from "../store";
 
 function StatusTextBox() {
+  const [profile] = useAtom(profileAtom);
   return (
     <>
       <div

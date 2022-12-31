@@ -1,22 +1,25 @@
 import React from "react";
 import { AuthUserInfo } from "../interfaces";
 import { AccountTypes, Gender } from "../interfaces/enums";
-import withProfile from "../hocs/data/withProfile";
-const cookie = require("js-cookie");
 
-type UProps = {
-  profile?: AuthUserInfo;
-};
+import { useAtom } from "jotai";
+import { profileAtom, tokenAtom } from "../store/index";
 
-const ProfileBasicBox = (props: UProps) => {
-  const { profile } = props;
+const ProfileBasicBox = () => {
+  const [profile] = useAtom<AuthUserInfo>(profileAtom);
+  const [token] = useAtom(tokenAtom);
+
   const [profileState, setProfileState] = React.useState<AuthUserInfo>({
     ...profile,
+    accountType: profile?.accountType,
+    firstname: profile?.firstname,
+    lastname: profile?.lastname,
+    gender: profile?.gender,
+    birthday: profile?.birthday,
   });
 
   const handleProfileUpdate = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const token = cookie.get("token");
     const response = await fetch(
       `/api/accounts/${token}/update-profile-basics`,
       {
@@ -24,7 +27,7 @@ const ProfileBasicBox = (props: UProps) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(profile),
+        body: JSON.stringify(profileState),
       }
     );
     const { status } = await response.json();
@@ -50,10 +53,14 @@ const ProfileBasicBox = (props: UProps) => {
                 id="guest"
                 name="membership"
                 value={AccountTypes.GUEST}
-                defaultChecked={
-                  profileState?.accountType === AccountTypes.GUEST
-                    ? true
-                    : false
+                checked={
+                  profileState?.accountType == AccountTypes[AccountTypes.GUEST]
+                }
+                onChange={(e) =>
+                  setProfileState({
+                    ...profileState,
+                    accountType: e.target.value,
+                  })
                 }
               />
               <label
@@ -77,8 +84,15 @@ const ProfileBasicBox = (props: UProps) => {
                 id="student"
                 name="membership"
                 value={AccountTypes.STUDENT}
-                defaultChecked={
-                  profile?.accountType === AccountTypes.STUDENT ? true : false
+                checked={
+                  profileState?.accountType ==
+                  AccountTypes[AccountTypes.STUDENT]
+                }
+                onChange={(e) =>
+                  setProfileState({
+                    ...profileState,
+                    accountType: e.target.value,
+                  })
                 }
               />
               <label
@@ -102,8 +116,15 @@ const ProfileBasicBox = (props: UProps) => {
                 id="lecturer"
                 name="membership"
                 value={AccountTypes.LECTURER}
-                defaultChecked={
-                  profile?.accountType === AccountTypes.LECTURER ? true : false
+                checked={
+                  profileState?.accountType ==
+                  AccountTypes[AccountTypes.LECTURER]
+                }
+                onChange={(e) =>
+                  setProfileState({
+                    ...profileState,
+                    accountType: e.target.value,
+                  })
                 }
               />
               <label
@@ -130,7 +151,13 @@ const ProfileBasicBox = (props: UProps) => {
                       className="form-control rounded-5"
                       placeholder="Firstname"
                       id="Firstname"
-                      value={profile?.firstname}
+                      value={profileState?.firstname}
+                      onChange={(e) =>
+                        setProfileState({
+                          ...profileState,
+                          firstname: e.target.value,
+                        })
+                      }
                     />
                     <label htmlFor="firstname">FIRST NAME</label>
                   </div>
@@ -142,8 +169,14 @@ const ProfileBasicBox = (props: UProps) => {
                       required={true}
                       className="form-control rounded-5"
                       id="lastname"
-                      value={profile?.lastname}
+                      value={profileState?.lastname}
                       placeholder="Lastname"
+                      onChange={(e) =>
+                        setProfileState({
+                          ...profileState,
+                          lastname: e.target.value,
+                        })
+                      }
                     />
                     <label htmlFor="lastname">LAST NAME</label>
                   </div>
@@ -162,8 +195,14 @@ const ProfileBasicBox = (props: UProps) => {
                         name="gender"
                         id="male"
                         value={Gender.MALE}
-                        defaultChecked={
-                          profile?.gender === Gender.MALE ? true : false
+                        checked={
+                          profileState?.gender === Gender.MALE ? true : false
+                        }
+                        onChange={(e) =>
+                          setProfileState({
+                            ...profileState,
+                            gender: e.target.value,
+                          })
                         }
                       />
                       <label className="form-check-label" htmlFor="male">
@@ -178,8 +217,14 @@ const ProfileBasicBox = (props: UProps) => {
                         name="gender"
                         id="female"
                         value={Gender.FEMALE}
-                        defaultChecked={
-                          profile?.gender === Gender.FEMALE ? true : false
+                        checked={
+                          profileState?.gender === Gender.FEMALE ? true : false
+                        }
+                        onChange={(e) =>
+                          setProfileState({
+                            ...profileState,
+                            gender: e.target.value,
+                          })
                         }
                       />
                       <label className="form-check-label" htmlFor="female">
@@ -194,10 +239,17 @@ const ProfileBasicBox = (props: UProps) => {
                     <input
                       type="date"
                       className="form-control rounded-5"
-                      id="birthdat"
+                      id="birthday"
                       placeholder="DATE OF BIRTH"
+                      value={profileState?.birthday}
+                      onChange={(e) =>
+                        setProfileState({
+                          ...profileState,
+                          birthday: e.target.value,
+                        })
+                      }
                     />
-                    <label htmlFor="birthdat">DATE OF BIRTH</label>
+                    <label htmlFor="birthday">DATE OF BIRTH</label>
                   </div>
                 </div>
               </div>
@@ -215,4 +267,4 @@ const ProfileBasicBox = (props: UProps) => {
   );
 };
 
-export default withProfile(ProfileBasicBox);
+export default ProfileBasicBox;

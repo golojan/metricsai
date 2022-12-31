@@ -9,17 +9,21 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const handleCase: ResponseFunctions = {
     POST: async (req: NextApiRequest, res: NextApiResponse) => {
       const { token } = req.query;
-      const { smsNotification, emailNotification } = req.body;
+      const { accountType, firstname, lastname, gender, birthday } = req.body;
 
       const { Accounts } = await dbCon();
 
       const saved = await Accounts.updateOne(
         { _id: token },
         {
-          smsNotification: smsNotification,
-          emailNotification: emailNotification,
+          accountType: accountType,
+          firstname: firstname,
+          lastname: lastname,
+          gender: gender,
+          birthday: birthday,
         }
       ).catch(catcher);
+
       if (saved) {
         res.status(200).json({
           status: true,

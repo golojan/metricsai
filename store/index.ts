@@ -1,10 +1,6 @@
-import { init, RematchDispatch, RematchRootState } from "@rematch/core";
-import { models, RootModel } from "./models";
+import { atom } from "jotai";
+import { AuthUserInfo } from "../interfaces";
+const cookie = require("js-cookie");
 
-export const store = init({
-  models,
-});
-
-export type Store = typeof store;
-export type Dispatch = RematchDispatch<RootModel>;
-export type RootState = RematchRootState<RootModel>;
+export const tokenAtom = atom(cookie.get("token") || "");
+export const profileAtom = atom<AuthUserInfo>({});

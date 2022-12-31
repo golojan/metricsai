@@ -12,7 +12,21 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       const { Accounts } = await dbCon();
       const account = await Accounts.findOne({ _id: token }).catch(catcher);
       if (account) {
-        res.status(200).json({ status: true, data: account });
+        res.status(200).json({
+          status: true,
+          data: {
+            _id: account._id,
+            firstname: account.firstname,
+            lastname: account.lastname,
+            email: account.email,
+            accountType: account.accountType,
+            gender: account.gender,
+            birthday: account.birthday,
+            picture: account.picture,
+            createdAt: account.createdAt,
+            updatedAt: account.updatedAt,
+          },
+        });
       } else {
         res.status(400).json({ status: false, error: "Account not found" });
       }

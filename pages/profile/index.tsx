@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../../components/Layout";
+
 import ProfileAvatarBlock from "../../components/ProfileAvatarBlock";
 import ProfileSchoolCodeBox from "../../components/ProfileSchoolCodeBox";
 import ProfileSettingsBox from "../../components/ProfileSettingsBox";
@@ -12,38 +13,27 @@ import { withAuth } from "./../../hocs/auth/withAuth";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 
-import { useDispatch, useSelector } from "react-redux";
-import { Dispatch, RootState } from "../../store";
+import { useAtom } from "jotai";
+import { profileAtom } from "./../../store/index";
+import { tokenAtom } from "./../../store/index";
+
 import { AuthUserInfo } from "../../interfaces";
-import withProfile from "../../hocs/data/withProfile";
-const cookie = require("js-cookie");
+import { getProfileInfo } from "./../../libs/queries";
 
-const HOC_ProfileAvatarBlock = withProfile(ProfileAvatarBlock);
-const HOC_ProfileBasicBox = withProfile(ProfileBasicBox);
-
-const HOC_ProfileSchoolCodeBox = withProfile(ProfileSchoolCodeBox);
-const HOC_ProfileGoogleScholarBox = withProfile(ProfileGoogleScholarBox);
-const HOC_ProfileScopusBox = withProfile(ProfileScopusBox);
-const HOC_ProfileOrcidBox = withProfile(ProfileOrcidBox);
-const HOC_ProfileSettingsBox = withProfile(ProfileSettingsBox);
-
-type UProps = {
-  profile: AuthUserInfo;
-  setProfile: (profile: AuthUserInfo) => void;
-};
-
-const Profile: NextPage<UProps> = (props) => {
-  const { profile, setProfile } = props;
-
-  const dispatch = useDispatch<Dispatch>();
+const Profile: NextPage = (props) => {
   const router = useRouter();
-  const token = cookie.get("token");
+  const [token] = useAtom(tokenAtom);
+  const [profile, setProfile] = useAtom(profileAtom);
+  const [done, setDone] = useState(true);
 
   useEffect(() => {
-    if (!token) {
-      router.push("/auth/");
+    if (done) {
+      getProfileInfo(token).then((res: AuthUserInfo) => {
+        setProfile(res);
+      });
     }
-  }, [token]);
+    setDone(true);
+  }, [done]);
 
   return (
     <>
@@ -51,14 +41,13 @@ const Profile: NextPage<UProps> = (props) => {
         <main className="col col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
           <div className="main-content">
             <div className="feeds">
-              {JSON.stringify(profile)}
-              <HOC_ProfileAvatarBlock />
-              <HOC_ProfileBasicBox />
-              <HOC_ProfileSchoolCodeBox />
-              <HOC_ProfileGoogleScholarBox />
-              <HOC_ProfileScopusBox />
-              <HOC_ProfileOrcidBox />
-              <HOC_ProfileSettingsBox />
+              <ProfileAvatarBlock />
+              <ProfileBasicBox />
+              <ProfileSchoolCodeBox />
+              <ProfileGoogleScholarBox />
+              <ProfileScopusBox />
+              <ProfileOrcidBox />
+              <ProfileSettingsBox />
             </div>
           </div>
         </main>

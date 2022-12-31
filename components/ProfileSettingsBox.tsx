@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { AuthUserInfo } from "../interfaces";
-const cookie = require("js-cookie");
 
-type UProps = {
-  profile?: AuthUserInfo;
-};
+import { useAtom } from "jotai";
+import { profileAtom, tokenAtom } from "../store/index";
 
-const ProfileSettingsBox = (props: UProps) => {
-  const { profile } = props;
+const ProfileSettingsBox = () => {
+  const [token] = useAtom<string>(tokenAtom);
+  const [profile] = useAtom<AuthUserInfo>(profileAtom);
   const [settings, setSettings] = React.useState<{
     smsNotification: boolean;
     emailNotification: boolean;
@@ -18,7 +17,6 @@ const ProfileSettingsBox = (props: UProps) => {
 
   const [run, setRun] = useState(false);
 
-  const token = cookie.get("token");
   const updateSettings = async () => {
     try {
       const res = await fetch(

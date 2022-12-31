@@ -1,12 +1,10 @@
 import React from "react";
 import { AuthUserInfo } from "../interfaces";
+import { useAtom } from "jotai";
+import { profileAtom } from "../store/index";
 
-type UProps = {
-  profile?: AuthUserInfo;
-};
-
-function ProfileScopusBox(props: UProps) {
-  const { profile } = props;
+function ProfileScopusBox() {
+  const [profile] = useAtom<AuthUserInfo>(profileAtom);
   const [scopusId, setScopusId] = React.useState<string>(
     profile?.scopusId || ""
   );
@@ -36,6 +34,7 @@ function ProfileScopusBox(props: UProps) {
                   placeholder="XXXXXXXXXX"
                   id="scopusId"
                   value={scopusId}
+                  onChange={(e) => setScopusId(e.target.value)}
                 />
 
                 <label htmlFor="floatingPass">Scopus Author ID</label>

@@ -1,14 +1,12 @@
 import { NextPage } from "next";
-import SlickSlider from "../components/SlickSlider";
-import StatusTextBox from "../components/StatusTextBox";
-import TabsBar from "../components/TabsBar";
 import AllPostFeeds from "./../components/AllPostFeeds";
 import Layout from "../components/Layout";
 import SearchBarLarge from "./../components/SearchBarLarge";
-const cookie = require("js-cookie");
+import { useAtom } from "jotai";
+import { tokenAtom } from "./../store/index";
 
 const Home: NextPage = () => {
-  const token = cookie.get("token");
+  const [token] = useAtom(tokenAtom);
   return (
     <Layout>
       <main className="col col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">

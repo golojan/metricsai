@@ -1,9 +1,9 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "../store";
+import { useAtom } from "jotai";
+import { profileAtom } from "../store";
 
 function TabsBar() {
-  const { Profile } = useSelector((state: RootState) => state.accounts);
+  const [profile] = useAtom(profileAtom);
   return (
     <>
       <ul

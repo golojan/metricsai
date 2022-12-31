@@ -5,8 +5,7 @@ import Head from "next/head";
 // Import css files
 
 import "../styles/globals.scss";
-import { Provider } from "react-redux";
-import { store } from "../store";
+import { Provider } from "jotai";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -17,7 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <Script src="vendor/jquery/jquery.min.js" />
       <Script src="vendor/bootstrap/js/bootstrap.bundle.min.js" />
-      <Provider store={store}>
+      <Provider>
         <Component {...pageProps} />
       </Provider>
     </>

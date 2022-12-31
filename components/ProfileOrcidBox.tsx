@@ -1,12 +1,11 @@
 import React from "react";
 import { AuthUserInfo } from "../interfaces";
 
-type UProps = {
-  profile?: AuthUserInfo;
-};
+import { useAtom } from "jotai";
+import { profileAtom } from "../store/index";
 
-function ProfileOrcidBox(props: UProps) {
-  const { profile } = props;
+function ProfileOrcidBox() {
+  const [profile] = useAtom<AuthUserInfo>(profileAtom);
   const [orcidId, setOrcidId] = React.useState<string>(profile?.orcidId || "");
   return (
     <>
@@ -34,6 +33,7 @@ function ProfileOrcidBox(props: UProps) {
                   placeholder="XXXXXXXXXXXXXXXX"
                   id="orcidId"
                   value={orcidId}
+                  onChange={(e) => setOrcidId(e.target.value)}
                 />
 
                 <label htmlFor="floatingPass">Orcid Author ID</label>

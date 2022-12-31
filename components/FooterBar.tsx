@@ -14,39 +14,34 @@ function FooterBar() {
           </div>
           <div className="col-md-4 text-end">
             <Link
-              target="_blank"
               href="#"
               className="btn social-btn btn-sm text-decoration-none"
             >
-              <i className="icofont-facebook" />
+              <i className="icofont-facebook text-2xl hover:text-blue-900" />
             </Link>
             <Link
-              target="_blank"
               href="#"
               className="btn social-btn btn-sm text-decoration-none"
             >
-              <i className="icofont-twitter" />
+              <i className="icofont-twitter text-2xl hover:text-blue-900" />
             </Link>
             <Link
-              target="_blank"
               href="#"
               className="btn social-btn btn-sm text-decoration-none"
             >
-              <i className="icofont-linkedin" />
+              <i className="icofont-linkedin text-2xl hover:text-blue-900" />
             </Link>
             <Link
-              target="_blank"
               href="#"
               className="btn social-btn btn-sm text-decoration-none"
             >
-              <i className="icofont-youtube-play" />
+              <i className="icofont-youtube-play text-2xl hover:text-blue-900" />
             </Link>
             <Link
-              target="_blank"
               href="#"
               className="btn social-btn btn-sm text-decoration-none"
             >
-              <i className="icofont-instagram" />
+              <i className="icofont-instagram text-2xl hover:text-blue-900" />
             </Link>
           </div>
         </div>

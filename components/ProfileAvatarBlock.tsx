@@ -1,13 +1,10 @@
 import React from "react";
-import withProfile from "../hocs/data/withProfile";
 import { AuthUserInfo } from "../interfaces";
+import { useAtom } from "jotai";
+import { profileAtom } from "../store/index";
 
-type UProps = {
-  profile?: AuthUserInfo;
-};
-
-const ProfileAvatarBlock = (props: UProps) => {
-  const { profile } = props;
+const ProfileAvatarBlock = () => {
+  const [profile] = useAtom<AuthUserInfo>(profileAtom);
   return (
     <>
       <div className="bg-white p-4 feed-item rounded-4 shadow-sm faq-page mb-3">
@@ -41,4 +38,4 @@ const ProfileAvatarBlock = (props: UProps) => {
   );
 };
 
-export default withProfile(ProfileAvatarBlock);
+export default ProfileAvatarBlock;
