@@ -1,18 +1,20 @@
 import { NextPage } from "next";
 import AllPostFeeds from "./../components/AllPostFeeds";
 import SearchBarLarge from "./../components/SearchBarLarge";
-import { useAtom } from "jotai";
-import { tokenAtom } from "./../store/index";
 import Layout from "../components/Layout";
+import { hasAuth } from "../hocs/auth/withAuth";
+const cookie = require("js-cookie");
 
 const Home: NextPage = () => {
-  const [token] = useAtom(tokenAtom);
+  const token = cookie.get("token");
+  const isAuth = hasAuth();
+
   return (
     <Layout>
       <main className="col col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
         <div className="main-content">
           <div className="tab-content" id="pills-tabContent">
-            {token ? null : <SearchBarLarge />}
+            {isAuth ? null : <SearchBarLarge />}
             <div className="pt-4 feeds">
               <AllPostFeeds />
             </div>

@@ -94,14 +94,6 @@ function FixedSideBar() {
                     className="dropdown-item rounded-3 px-2 py-1 my-1"
                     href="/profile/academia"
                   >
-                    Google Presence
-                  </Link>
-                </li>
-                <li className="ml-5">
-                  <Link
-                    className="dropdown-item rounded-3 px-2 py-1 my-1"
-                    href="/profile/academia"
-                  >
                     Academia Profile
                   </Link>
                 </li>
@@ -122,7 +114,6 @@ function FixedSideBar() {
                 <span>Logout</span>
               </Link>
             </li>
-
           </ul>
         </div>
       </div>
