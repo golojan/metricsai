@@ -2,6 +2,11 @@
 // @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+  scroll-behavior: smooth;
+}
+
 @import "../public/vendor/icofont/icofont.min.css";
 @import "../public/vendor/bootstrap/css/bootstrap.min.css";
 

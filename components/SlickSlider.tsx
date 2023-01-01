@@ -48,7 +48,7 @@ function SlickSlider() {
               <div className="position-relative d-flex justify-content-center">
                 <a href="profile.html" className="text-decoration-none">
                   <img
-                    src="img/rmate1.jpg"
+                    src="/img/rmate1.jpg"
                     className="img-fluid rounded-circle mb-3"
                     alt="profile-img"
                   />
@@ -89,7 +89,7 @@ function SlickSlider() {
               <div className="position-relative d-flex justify-content-center">
                 <a href="profile.html" className="text-decoration-none">
                   <img
-                    src="img/rmate1.jpg"
+                    src="/img/rmate1.jpg"
                     className="img-fluid rounded-circle mb-3"
                     alt="profile-img"
                   />
@@ -130,7 +130,7 @@ function SlickSlider() {
               <div className="position-relative d-flex justify-content-center">
                 <a href="profile.html" className="text-decoration-none">
                   <img
-                    src="img/rmate1.jpg"
+                    src="/img/rmate1.jpg"
                     className="img-fluid rounded-circle mb-3"
                     alt="profile-img"
                   />
@@ -171,7 +171,7 @@ function SlickSlider() {
               <div className="position-relative d-flex justify-content-center">
                 <a href="profile.html" className="text-decoration-none">
                   <img
-                    src="img/rmate1.jpg"
+                    src="/img/rmate1.jpg"
                     className="img-fluid rounded-circle mb-3"
                     alt="profile-img"
                   />
@@ -212,7 +212,7 @@ function SlickSlider() {
               <div className="position-relative d-flex justify-content-center">
                 <a href="profile.html" className="text-decoration-none">
                   <img
-                    src="img/rmate1.jpg"
+                    src="/img/rmate1.jpg"
                     className="img-fluid rounded-circle mb-3"
                     alt="profile-img"
                   />

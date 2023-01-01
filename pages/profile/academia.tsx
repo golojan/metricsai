@@ -4,23 +4,22 @@ import Layout from "../../components/Layout";
 import { withAuth } from "../../hocs/auth/withAuth";
 import { NextPage } from "next";
 
-import { useAtom } from "jotai";
-import { tokenAtom } from "../../store/index";
-
 import { AuthUserInfo } from "../../interfaces";
-const cookie = require("js-cookie");
+import { getProfileInfo } from "../../libs/queries";
 
-const Academia: NextPage = ({ user, token }: any) => {
-  const [, setToken] = useAtom(tokenAtom);
-  const [profile, setProfile] = useState<AuthUserInfo>({
-    ...user,
-  });
+const Academia: NextPage = ({ token }: any) => {
+  const [profile, setProfile] = useState<AuthUserInfo>({});
+
+  useEffect(() => {
+    getProfileInfo(token).then((res: AuthUserInfo) => {
+      setProfile(res);
+    });
+  }, [token]);
 
   const saveGoogleScholarId = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const _token = cookie.get("token");
     const response = await fetch(
-      `/api/accounts/${_token}/update-profile-academia`,
+      `/api/accounts/${token}/update-profile-academia`,
       {
         method: "POST",
         headers: {
@@ -35,9 +34,8 @@ const Academia: NextPage = ({ user, token }: any) => {
 
   const saveScopusId = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const _token = cookie.get("token");
     const response = await fetch(
-      `/api/accounts/${_token}/update-profile-academia`,
+      `/api/accounts/${token}/update-profile-academia`,
       {
         method: "POST",
         headers: {
@@ -52,9 +50,8 @@ const Academia: NextPage = ({ user, token }: any) => {
 
   const saveOrcidId = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const _token = cookie.get("token");
     const response = await fetch(
-      `/api/accounts/${_token}/update-profile-academia`,
+      `/api/accounts/${token}/update-profile-academia`,
       {
         method: "POST",
         headers: {

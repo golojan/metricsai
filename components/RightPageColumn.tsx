@@ -7,7 +7,7 @@ import HashBox from "./HashBox";
 import TrendingWith from "./TrendingWith";
 import TrendingBox from "./TrendingBox";
 import NewsBox from "./NewsBox";
-import AdBox from "./AdBox";
+import { AdBox } from "./AdBox";
 const cookie = require("js-cookie");
 
 function RightPageColumn() {

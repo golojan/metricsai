@@ -1,15 +1,15 @@
 import React from "react";
+
 import { useAtom } from "jotai";
 import { profileAtom } from "../store";
 
 function PostFeed() {
-  const [profile] = useAtom(profileAtom);
   return (
     <>
       <div className="bg-white p-3 feed-item rounded-4 mb-3 shadow-sm">
         <div className="d-flex">
           <img
-            src="img/rmate2.jpg"
+            src="/img/rmate2.jpg"
             className="img-fluid rounded-circle user-img"
             alt="profile-img"
           />
@@ -102,7 +102,7 @@ function PostFeed() {
                   data-bs-target="#commentModal"
                 >
                   <img
-                    src="img/post1.png"
+                    src="/img/post1.png"
                     className="img-fluid rounded mb-3"
                     alt="post-img"
                   />
@@ -172,7 +172,7 @@ function PostFeed() {
                       data-bs-target="#commentModal"
                     >
                       <img
-                        src="img/rmate1.jpg"
+                        src="/img/rmate1.jpg"
                         className="img-fluid rounded-circle"
                         alt="commenters-img"
                       />
@@ -223,7 +223,7 @@ function PostFeed() {
                       data-bs-target="#commentModal"
                     >
                       <img
-                        src="img/rmate3.jpg"
+                        src="/img/rmate3.jpg"
                         className="img-fluid rounded-circle"
                         alt="commenters-img"
                       />
@@ -275,7 +275,7 @@ function PostFeed() {
                       data-bs-target="#commentModal"
                     >
                       <img
-                        src="img/rmate2.jpg"
+                        src="/img/rmate2.jpg"
                         className="img-fluid rounded-circle"
                         alt="commenters-img"
                       />

@@ -3,22 +3,17 @@ import Layout from "../../components/Layout";
 
 import { withAuth } from "../../hocs/auth/withAuth";
 import { NextPage } from "next";
-import { useAtom } from "jotai";
-import { tokenAtom } from "../../store/index";
-
 import { AuthUserInfo } from "../../interfaces";
 import { getProfileInfo } from "../../libs/queries";
-const cookie = require("js-cookie");
 
-const Notifications: NextPage = () => {
-  const [token] = useAtom(tokenAtom);
+const Notifications: NextPage = ({ token }: any) => {
   const [profile, setProfile] = useState<AuthUserInfo>({});
 
   useEffect(() => {
     getProfileInfo(token).then((res: AuthUserInfo) => {
       setProfile(res);
     });
-  });
+  }, [token]);
 
   const handleSettings = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
@@ -36,9 +31,8 @@ const Notifications: NextPage = () => {
 
   const saveSettings = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const _token = cookie.get("token");
     const response = await fetch(
-      `/api/accounts/${_token}/update-profile-settings`,
+      `/api/accounts/${token}/update-profile-settings`,
       {
         method: "POST",
         headers: {

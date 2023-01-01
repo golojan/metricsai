@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { authlogout } from "../hocs/auth/withAuth";
-import AdBox from "./AdBox";
+import { AdBox, AdBoxMidium } from "./AdBox";
 
 function FixedSideBar() {
   return (
@@ -12,7 +12,7 @@ function FixedSideBar() {
           <div className="pb-4 mb-4 d-none">
             <Link href="/" className="text-decoration-none">
               <img
-                src="img/logo.png"
+                src="/img/logo.png"
                 className="img-fluid logo"
                 alt="brand-logo"
               />
@@ -23,7 +23,7 @@ function FixedSideBar() {
               <Link href="/" className="nav-link active">
                 <span className="material-icons me-3">
                   <img
-                    src="img/logo.png"
+                    src="/img/logo.png"
                     className="img-fluid"
                     alt="brand-logo"
                     width={"22px"}
@@ -116,6 +116,7 @@ function FixedSideBar() {
             </li>
           </ul>
         </div>
+        <AdBoxMidium />
       </div>
     </>
   );

@@ -13,7 +13,7 @@ function MobilePageSideBar() {
           <div className="pb-4 mb-4">
             <Link href="/" className="text-decoration-none">
               <img
-                src="img/logo.png"
+                src="/img/logo.png"
                 className="img-fluid logo"
                 alt="brand-logo"
               />
@@ -24,7 +24,7 @@ function MobilePageSideBar() {
               <Link href="/" className="nav-link active">
                 <span className="material-icons me-3">
                   <img
-                    src="img/logo.png"
+                    src="/img/logo.png"
                     className="img-fluid"
                     alt="brand-logo"
                     width={"22px"}

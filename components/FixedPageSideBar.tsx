@@ -1,10 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import { authlogout, hasAuth } from "../hocs/auth/withAuth";
-import AdBox from "./AdBox";
+import { AdBox } from "./AdBox";
 
 function FixedPageSideBar() {
-  const has_auth = hasAuth();
   return (
     <>
       <div className="ps-0 m-none fix-sidebar">
@@ -12,7 +10,7 @@ function FixedPageSideBar() {
           <div className="pb-4 mb-4 d-none">
             <Link href="/" className="text-decoration-none">
               <img
-                src="img/logo.png"
+                src="/img/logo.png"
                 className="img-fluid logo"
                 alt="brand-logo"
               />
@@ -24,7 +22,7 @@ function FixedPageSideBar() {
               <Link href="/" className="nav-link active">
                 <span className="material-icons me-3">
                   <img
-                    src="img/logo.png"
+                    src="/img/logo.png"
                     className="img-fluid"
                     alt="brand-logo"
                     width={"22px"}

@@ -53,7 +53,7 @@ const Metrics: NextPage = ({ user, token }: any) => {
                   className="p-3 border-bottom d-flex text-dark text-decoration-none account-item pf-item"
                 >
                   <img
-                    src="img/rmate5.jpg"
+                    src="/img/rmate5.jpg"
                     className="img-fluid rounded-circle me-3"
                     alt="profile-img"
                   />
@@ -85,7 +85,7 @@ const Metrics: NextPage = ({ user, token }: any) => {
                   className="p-3 border-bottom d-flex text-dark text-decoration-none account-item pf-item"
                 >
                   <img
-                    src="img/rmate4.jpg"
+                    src="/img/rmate4.jpg"
                     className="img-fluid rounded-circle me-3"
                     alt="profile-img"
                   />
@@ -116,7 +116,7 @@ const Metrics: NextPage = ({ user, token }: any) => {
                   className="p-3 d-flex text-dark text-decoration-none account-item pf-item"
                 >
                   <img
-                    src="img/rmate3.jpg"
+                    src="/img/rmate3.jpg"
                     className="img-fluid rounded-circle me-3"
                     alt="profile-img"
                   />
@@ -148,7 +148,7 @@ const Metrics: NextPage = ({ user, token }: any) => {
                   className="p-3 border-bottom d-flex text-dark text-decoration-none account-item pf-item"
                 >
                   <img
-                    src="img/rmate2.jpg"
+                    src="/img/rmate2.jpg"
                     className="img-fluid rounded-circle me-3"
                     alt="profile-img"
                   />
@@ -180,7 +180,7 @@ const Metrics: NextPage = ({ user, token }: any) => {
                   className="p-3 border-bottom d-flex text-dark text-decoration-none account-item pf-item"
                 >
                   <img
-                    src="img/rmate4.jpg"
+                    src="/img/rmate4.jpg"
                     className="img-fluid rounded-circle me-3"
                     alt="profile-img"
                   />
@@ -211,7 +211,7 @@ const Metrics: NextPage = ({ user, token }: any) => {
                   className="p-3 d-flex text-dark text-decoration-none account-item pf-item"
                 >
                   <img
-                    src="img/rmate6.jpg"
+                    src="/img/rmate6.jpg"
                     className="img-fluid rounded-circle me-3"
                     alt="profile-img"
                   />
@@ -247,7 +247,7 @@ const Metrics: NextPage = ({ user, token }: any) => {
                   className="p-3 border-bottom d-flex text-dark text-decoration-none account-item pf-item"
                 >
                   <img
-                    src="img/rmate5.jpg"
+                    src="/img/rmate5.jpg"
                     className="img-fluid rounded-circle me-3"
                     alt="profile-img"
                   />
@@ -279,7 +279,7 @@ const Metrics: NextPage = ({ user, token }: any) => {
                   className="p-3 border-bottom d-flex text-dark text-decoration-none account-item pf-item"
                 >
                   <img
-                    src="img/rmate4.jpg"
+                    src="/img/rmate4.jpg"
                     className="img-fluid rounded-circle me-3"
                     alt="profile-img"
                   />
@@ -310,7 +310,7 @@ const Metrics: NextPage = ({ user, token }: any) => {
                   className="p-3 d-flex text-dark text-decoration-none account-item pf-item"
                 >
                   <img
-                    src="img/rmate3.jpg"
+                    src="/img/rmate3.jpg"
                     className="img-fluid rounded-circle me-3"
                     alt="profile-img"
                   />
@@ -342,7 +342,7 @@ const Metrics: NextPage = ({ user, token }: any) => {
                   className="p-3 border-bottom d-flex text-dark text-decoration-none account-item pf-item"
                 >
                   <img
-                    src="img/rmate2.jpg"
+                    src="/img/rmate2.jpg"
                     className="img-fluid rounded-circle me-3"
                     alt="profile-img"
                   />
@@ -374,7 +374,7 @@ const Metrics: NextPage = ({ user, token }: any) => {
                   className="p-3 border-bottom d-flex text-dark text-decoration-none account-item pf-item"
                 >
                   <img
-                    src="img/rmate4.jpg"
+                    src="/img/rmate4.jpg"
                     className="img-fluid rounded-circle me-3"
                     alt="profile-img"
                   />
@@ -405,7 +405,7 @@ const Metrics: NextPage = ({ user, token }: any) => {
                   className="p-3 d-flex text-dark text-decoration-none account-item pf-item"
                 >
                   <img
-                    src="img/rmate6.jpg"
+                    src="/img/rmate6.jpg"
                     className="img-fluid rounded-circle me-3"
                     alt="profile-img"
                   />
@@ -463,7 +463,7 @@ const Metrics: NextPage = ({ user, token }: any) => {
                 <div className="bg-white p-3 feed-item rounded-4 mb-3 shadow-sm">
                   <div className="d-flex">
                     <img
-                      src="img/rmate1.jpg"
+                      src="/img/rmate1.jpg"
                       className="img-fluid rounded-circle user-img"
                       alt="profile-img"
                     />
@@ -567,7 +567,7 @@ const Metrics: NextPage = ({ user, token }: any) => {
                             data-bs-target="#commentModal"
                           >
                             <img
-                              src="img/post1.png"
+                              src="/img/post1.png"
                               className="img-fluid rounded mb-3"
                               alt="post-img"
                             />
@@ -641,7 +641,7 @@ const Metrics: NextPage = ({ user, token }: any) => {
                                 data-bs-target="#commentModal"
                               >
                                 <img
-                                  src="img/rmate1.jpg"
+                                  src="/img/rmate1.jpg"
                                   className="img-fluid rounded-circle"
                                   alt="commenters-img"
                                 />
@@ -693,7 +693,7 @@ const Metrics: NextPage = ({ user, token }: any) => {
                                 data-bs-target="#commentModal"
                               >
                                 <img
-                                  src="img/rmate3.jpg"
+                                  src="/img/rmate3.jpg"
                                   className="img-fluid rounded-circle"
                                   alt="commenters-img"
                                 />
@@ -748,7 +748,7 @@ const Metrics: NextPage = ({ user, token }: any) => {
                                 data-bs-target="#commentModal"
                               >
                                 <img
-                                  src="img/rmate2.jpg"
+                                  src="/img/rmate2.jpg"
                                   className="img-fluid rounded-circle"
                                   alt="commenters-img"
                                 />
@@ -802,7 +802,7 @@ const Metrics: NextPage = ({ user, token }: any) => {
                 <div className="bg-white p-3 feed-item rounded-4 mb-3 shadow-sm">
                   <div className="d-flex">
                     <img
-                      src="img/rmate4.jpg"
+                      src="/img/rmate4.jpg"
                       className="img-fluid rounded-circle user-img"
                       alt="profile-img"
                     />
@@ -902,7 +902,7 @@ const Metrics: NextPage = ({ user, token }: any) => {
                             data-bs-target="#commentModal"
                           >
                             <img
-                              src="img/post2.png"
+                              src="/img/post2.png"
                               className="img-fluid rounded mb-3"
                               alt="post-img"
                             />
@@ -976,7 +976,7 @@ const Metrics: NextPage = ({ user, token }: any) => {
                                 data-bs-target="#commentModal"
                               >
                                 <img
-                                  src="img/rmate1.jpg"
+                                  src="/img/rmate1.jpg"
                                   className="img-fluid rounded-circle"
                                   alt="commenters-img"
                                 />
@@ -1028,7 +1028,7 @@ const Metrics: NextPage = ({ user, token }: any) => {
                                 data-bs-target="#commentModal"
                               >
                                 <img
-                                  src="img/rmate3.jpg"
+                                  src="/img/rmate3.jpg"
                                   className="img-fluid rounded-circle"
                                   alt="commenters-img"
                                 />
@@ -1083,7 +1083,7 @@ const Metrics: NextPage = ({ user, token }: any) => {
                                 data-bs-target="#commentModal"
                               >
                                 <img
-                                  src="img/rmate2.jpg"
+                                  src="/img/rmate2.jpg"
                                   className="img-fluid rounded-circle"
                                   alt="commenters-img"
                                 />

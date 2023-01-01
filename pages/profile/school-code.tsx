@@ -4,30 +4,22 @@ import Layout from "../../components/Layout";
 import { withAuth } from "./../../hocs/auth/withAuth";
 import { NextPage } from "next";
 
-import { useAtom } from "jotai";
-import { tokenAtom } from "./../../store/index";
-
 import { AuthUserInfo } from "../../interfaces";
 import { getProfileInfo } from "./../../libs/queries";
-const cookie = require("js-cookie");
 
-const SchoolCode: NextPage = () => {
-  const [token] = useAtom<any>(tokenAtom);
-  const [profile, setProfile] = useState<AuthUserInfo>({
-    schoolCode: "",
-  });
+const SchoolCode: NextPage = ({ token }: any) => {
+  const [profile, setProfile] = useState<AuthUserInfo>({});
 
   useEffect(() => {
     getProfileInfo(token).then((res: AuthUserInfo) => {
       setProfile(res);
     });
-  });
+  }, [token]);
 
   const verifySchoolCode = async (e: React.SyntheticEvent) => {
     e.preventDefault();
-    const _token = cookie.get("token");
     const response = await fetch(
-      `/api/accounts/${_token}/update-profile-school-code`,
+      `/api/accounts/${token}/update-profile-school-code`,
       {
         method: "POST",
         headers: {

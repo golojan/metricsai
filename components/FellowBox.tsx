@@ -9,7 +9,7 @@ function FellowBox() {
         className="p-3 border-bottom d-flex text-dark text-decoration-none account-item"
       >
         <img
-          src="img/rmate5.jpg"
+          src="/img/rmate5.jpg"
           className="img-fluid rounded-circle me-3"
           alt="profile-img"
         />

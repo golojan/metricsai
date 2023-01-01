@@ -14,20 +14,16 @@ import MobilePageSideBar from "./MobilePageSideBar";
 import FixedPageSideBar from "./FixedPageSideBar";
 import RightPageColumn from "./RightPageColumn";
 
-import { useAtom } from "jotai";
-import { profileAtom } from "../store";
-
 interface Props {
   children: React.ReactNode;
 }
 
 function Layout({ children }: Props) {
-  const [profile] = useAtom(profileAtom);
-  const isAuth = hasAuth();
+  const token = cookie.get("token");
   return (
     <>
       <Head>
-        <title>Metrics AI | School Ranking System</title>
+        <title> Metrics AI | School Ranking System</title>
       </Head>
       <TopBar />
       <SocialMenu />
@@ -36,11 +32,11 @@ function Layout({ children }: Props) {
           <div className="row position-relative">
             {children}
             <aside className="col col-xl-3 order-xl-1 col-lg-6 order-lg-2 col-md-6 col-sm-6 col-12">
-              {isAuth ? <MobileSideBar /> : <MobilePageSideBar />}
-              {isAuth ? <FixedSideBar /> : <FixedPageSideBar />}
+              {token ? <MobileSideBar /> : <MobilePageSideBar />}
+              {token ? <FixedSideBar /> : <FixedPageSideBar />}
             </aside>
             <aside className="col col-xl-3 order-xl-3 col-lg-6 order-lg-3 col-md-6 col-sm-6 col-12">
-              {isAuth ? <RightColumn /> : <RightPageColumn />}
+              {token ? <RightColumn /> : <RightPageColumn />}
             </aside>
           </div>
         </div>

@@ -12,7 +12,7 @@ export const authLogin = (token: string) => {
   const expire_time: any = process.env.NEXT_PUBLIC_COOKIE_TIME_IN_MINS || 10;
   const inMinutes = new Date(new Date().getTime() + expire_time * 60 * 1000);
   cookie.set("token", token as string, { expires: inMinutes });
-  Router.push("/metrics/");
+  Router.push("/metrics");
 };
 
 export const auth = (ctx: any) => {
@@ -20,10 +20,10 @@ export const auth = (ctx: any) => {
   // If there's no token, it means the user is not logged in.
   if (ctx.req && !token) {
     if (typeof window === "undefined") {
-      ctx.res.writeHead(302, { Location: "/auth/" });
+      ctx.res.writeHead(302, { Location: "/auth" });
       ctx.res.end();
     } else {
-      Router.push("/auth/");
+      Router.push("/auth");
     }
   }
   return token;
@@ -46,18 +46,21 @@ export const authlogout = () => {
 
 export const withAuth = (WrappedComponent: any) => {
   const Wrapper = (props: any) => {
-    const token = cookie.get("token");
     const syncLogout = (event: any) => {
       if (event.key === "logout") {
         console.log("logged out from storage!");
         Router.push("/auth");
       }
     };
+
+    const token = cookie.get("token");
     useEffect(() => {
       window.addEventListener("storage", syncLogout);
+
       if (!token) {
         Router.push("/auth");
       }
+
       return () => {
         window.removeEventListener("storage", syncLogout);
         window.localStorage.removeItem("logout");
@@ -68,17 +71,11 @@ export const withAuth = (WrappedComponent: any) => {
 
   Wrapper.getInitialProps = async (ctx: any) => {
     const token = auth(ctx);
-    const response = await fetch(
-      `${process.env.DOMAIN}/api/accounts/${token}/profile`
-    );
-    const result = await response.json();
-    const { data: user } = result;
     const componentProps =
       WrappedComponent.getInitialProps &&
       (await WrappedComponent.getInitialProps(ctx));
-    return { ...componentProps, user, token };
+    return { ...componentProps, token };
   };
 
   return Wrapper;
-
 };

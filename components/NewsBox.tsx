@@ -19,7 +19,7 @@ function NewsBox() {
           </p>
         </div>
         <img
-          src="img/trend1.jpg"
+          src="/img/trend1.jpg"
           className="img-fluid rounded-4 ms-auto"
           alt="trending-img"
         />

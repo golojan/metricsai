@@ -20,7 +20,7 @@ function TrendingWith() {
           <span className="text-primary">#NdubuisiAnibeze</span>
         </div>
         <img
-          src="img/rmate4.jpg"
+          src="/img/rmate4.jpg"
           className="img-fluid rounded-4 ms-auto"
           alt="profile-img"
         />

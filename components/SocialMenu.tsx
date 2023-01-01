@@ -7,7 +7,7 @@ function SocialMenu() {
       <div className="web-none d-flex align-items-center px-3 pt-3">
         <Link href="/" className="text-decoration-none">
           <img
-            src="img/logo.png"
+            src="/img/logo.png"
             className="img-fluid logo-mobile"
             alt="brand-logo"
           />

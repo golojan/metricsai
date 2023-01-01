@@ -4,12 +4,18 @@ import Layout from "../../components/Layout";
 import { withAuth } from "./../../hocs/auth/withAuth";
 import { NextPage } from "next";
 
-
 import { AccountTypes, Gender } from "../../interfaces/enums";
 import { AuthUserInfo } from "../../interfaces";
+import { getProfileInfo } from "../../libs/queries";
 
-const Profile: NextPage = ({ user, token }: any) => {
-  const [profile, setProfile] = useState<AuthUserInfo>({ ...user });
+const Profile: NextPage = ({ token }: any) => {
+  //
+  const [profile, setProfile] = useState<AuthUserInfo>({});
+  useEffect(() => {
+    getProfileInfo(token).then((res: AuthUserInfo) => {
+      setProfile(res);
+    });
+  }, [token]);
 
   const handleProfileUpdate = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
