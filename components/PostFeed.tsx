@@ -1,8 +1,5 @@
 import React from "react";
 
-import { useAtom } from "jotai";
-import { profileAtom } from "../store";
-
 function PostFeed() {
   return (
     <>

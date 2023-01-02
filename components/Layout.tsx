@@ -3,23 +3,22 @@ import FooterBar from "./FooterBar";
 import SocialMenu from "./SocialMenu";
 import TopBar from "./TopBar";
 import Head from "next/head";
-import MobileSideBar from "./MobileSideBar";
-import FixedSideBar from "./FixedSideBar";
 import RightColumn from "./RightColumn";
 
-const cookie = require("js-cookie");
-
 import { hasAuth } from "../hocs/auth/withAuth";
-import MobilePageSideBar from "./MobilePageSideBar";
-import FixedPageSideBar from "./FixedPageSideBar";
+
 import RightPageColumn from "./RightPageColumn";
+import FixedPageMenu from "./Menus/FixedPageMenu";
+import FixedSecureMenu from "./Menus/FixedSecureMenu";
+import MobileSecureMenu from "./Menus/MobileSecureMenu";
+import MobilePageMenu from "./Menus/MobilePageMenu";
 
 interface Props {
   children: React.ReactNode;
 }
 
 function Layout({ children }: Props) {
-  const token = cookie.get("token");
+  const auth = hasAuth();
   return (
     <>
       <Head>
@@ -32,11 +31,11 @@ function Layout({ children }: Props) {
           <div className="row position-relative">
             {children}
             <aside className="col col-xl-3 order-xl-1 col-lg-6 order-lg-2 col-md-6 col-sm-6 col-12">
-              {token ? <MobileSideBar /> : <MobilePageSideBar />}
-              {token ? <FixedSideBar /> : <FixedPageSideBar />}
+              {auth ? <FixedSecureMenu /> : <FixedPageMenu />}
+              {auth ? <MobileSecureMenu /> : <MobilePageMenu />}
             </aside>
             <aside className="col col-xl-3 order-xl-3 col-lg-6 order-lg-3 col-md-6 col-sm-6 col-12">
-              {token ? <RightColumn /> : <RightPageColumn />}
+              {auth ? <RightColumn /> : <RightPageColumn />}
             </aside>
           </div>
         </div>

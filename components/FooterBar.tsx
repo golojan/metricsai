@@ -17,31 +17,31 @@ function FooterBar() {
               href="#"
               className="btn social-btn btn-sm text-decoration-none"
             >
-              <i className="icofont-facebook text-2xl hover:text-blue-900" />
+              <i className="icofont-facebook text-2xl hover:text-red-500" />
             </Link>
             <Link
               href="#"
               className="btn social-btn btn-sm text-decoration-none"
             >
-              <i className="icofont-twitter text-2xl hover:text-blue-900" />
+              <i className="icofont-twitter text-2xl hover:text-red-500" />
             </Link>
             <Link
               href="#"
               className="btn social-btn btn-sm text-decoration-none"
             >
-              <i className="icofont-linkedin text-2xl hover:text-blue-900" />
+              <i className="icofont-linkedin text-2xl hover:text-red-500" />
             </Link>
             <Link
               href="#"
               className="btn social-btn btn-sm text-decoration-none"
             >
-              <i className="icofont-youtube-play text-2xl hover:text-blue-900" />
+              <i className="icofont-youtube-play text-2xl hover:text-red-500" />
             </Link>
             <Link
               href="#"
               className="btn social-btn btn-sm text-decoration-none"
             >
-              <i className="icofont-instagram text-2xl hover:text-blue-900" />
+              <i className="icofont-instagram text-2xl hover:text-red-500" />
             </Link>
           </div>
         </div>

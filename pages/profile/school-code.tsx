@@ -8,6 +8,7 @@ import { AuthUserInfo } from "../../interfaces";
 import { getProfileInfo } from "./../../libs/queries";
 
 const SchoolCode: NextPage = ({ token }: any) => {
+
   const [profile, setProfile] = useState<AuthUserInfo>({});
 
   useEffect(() => {

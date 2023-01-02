@@ -59,6 +59,7 @@ export const withAuth = (WrappedComponent: any) => {
 
       if (!token) {
         Router.push("/auth");
+        
       }
 
       return () => {

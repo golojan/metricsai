@@ -16,24 +16,24 @@ function TabsBar() {
             className="p-3 nav-link text-muted active"
             id="pills-feed-tab"
             data-bs-toggle="pill"
-            data-bs-target="#pills-feed"
+            data-bs-target="#pills-feeds"
             type="button"
             role="tab"
-            aria-controls="pills-feed"
+            aria-controls="pills-feeds"
             aria-selected="true"
           >
             Feeds
           </button>
         </li>
-        <li className="nav-item" role="presentation_2">
+        <li className="nav-item" role="presentation">
           <button
             className="p-3 nav-link text-muted"
-            id="pills-people-tab"
+            id="pills-lecturers-tab"
             data-bs-toggle="pill"
-            data-bs-target="#pills-people"
+            data-bs-target="#pills-lecturers"
             type="button"
             role="tab"
-            aria-controls="pills-people"
+            aria-controls="pills-lecturers"
             aria-selected="false"
           >
             Lecturers
@@ -42,12 +42,12 @@ function TabsBar() {
         <li className="nav-item" role="presentation">
           <button
             className="p-3 nav-link text-muted"
-            id="pills-people-tab"
+            id="pills-students-tab"
             data-bs-toggle="pill"
-            data-bs-target="#pills-people"
+            data-bs-target="#pills-students"
             type="button"
             role="tab"
-            aria-controls="pills-people"
+            aria-controls="pills-students"
             aria-selected="false"
           >
             Students

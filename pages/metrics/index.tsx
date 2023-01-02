@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { NextPage } from "next";
 import SlickSlider from "../../components/SlickSlider";
 import StatusTextBox from "../../components/StatusTextBox";
@@ -6,17 +6,16 @@ import TabsBar from "../../components/TabsBar";
 import AllPostFeeds from "./../../components/AllPostFeeds";
 import Layout from "../../components/Layout";
 import { withAuth } from "../../hocs/auth/withAuth";
+import { getProfileInfo } from "../../libs/queries";
+import { AuthUserInfo } from "../../interfaces";
 
-import { useAtom } from "jotai";
-import { profileAtom } from "../../store/index";
+const Metrics: NextPage = ({ token }: any) => {
+  const [profile, setProfile] = useState<AuthUserInfo>({});
 
-const Metrics: NextPage = ({ user, token }: any) => {
-  const [profile, setProfile] = useAtom(profileAtom);
   useEffect(() => {
-    setProfile(user);
-    return () => {
-      true;
-    };
+    getProfileInfo(token).then((res: AuthUserInfo) => {
+      setProfile(res);
+    });
   }, [token]);
 
   return (
@@ -31,6 +30,7 @@ const Metrics: NextPage = ({ user, token }: any) => {
               role="tabpanel"
               aria-labelledby="pills-feed-tab"
             >
+
               <StatusTextBox />
               <div>
                 <SlickSlider />
