@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import SocialMenu from "./SocialMenu";
 
@@ -10,46 +11,46 @@ function TopBar() {
             <div className="row">
               <div className="col-4 col-sm-12 ol-xs-12">
                 <div className="logo sm:text-center">
-                  <a href="/" className="text-white text-2xl font-bold">
+                  <Link href="/" className="text-white text-2xl font-bold">
                     <img src="/img/logo.png" height={50} alt="logo" />
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="d-none">
                 <div className="flex flex-row text-center align-middle justify-end items-center h-full">
-                  <a href="/" className="text-white mx-3 h5">
+                  <Link href="/" className="text-white mx-3 h5">
                     Home
-                  </a>
-                  <a href="/" className="text-white mx-3 h5">
+                  </Link>
+                  <Link href="/" className="text-white mx-3 h5">
                     Home
-                  </a>
-                  <a href="/" className="text-white mx-3 h5">
+                  </Link>
+                  <Link href="/" className="text-white mx-3 h5">
                     Home
-                  </a>
-                  <a href="/" className="text-white mx-3 h5">
+                  </Link>
+                  <Link href="/" className="text-white mx-3 h5">
                     Home
-                  </a>
-                  <a href="/" className="text-white mx-3 h5">
+                  </Link>
+                  <Link href="/" className="text-white mx-3 h5">
                     Home
-                  </a>
-                  <a href="/" className="text-white mx-3 h5">
+                  </Link>
+                  <Link href="/" className="text-white mx-3 h5">
                     Home
-                  </a>{" "}
-                  <a href="/" className="text-white mx-3 h5">
+                  </Link>{" "}
+                  <Link href="/" className="text-white mx-3 h5">
                     Home
-                  </a>{" "}
-                  <a href="/" className="text-white mx-3 h5">
+                  </Link>{" "}
+                  <Link href="/" className="text-white mx-3 h5">
                     Home
-                  </a>{" "}
-                  <a href="/" className="text-white mx-3 h5">
+                  </Link>{" "}
+                  <Link href="/" className="text-white mx-3 h5">
                     Home
-                  </a>{" "}
-                  <a href="/" className="text-white mx-3 h5">
+                  </Link>{" "}
+                  <Link href="/" className="text-white mx-3 h5">
                     Home
-                  </a>{" "}
-                  <a href="/" className="text-white mx-3 h5">
+                  </Link>{" "}
+                  <Link href="/" className="text-white mx-3 h5">
                     Home
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

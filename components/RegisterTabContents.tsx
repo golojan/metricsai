@@ -397,6 +397,7 @@ function RegisterTabContents() {
                           className="form-control rounded-5"
                           id="birthdat"
                           placeholder="DATE OF BIRTH"
+                          autoComplete="off"
                           onChange={(e) =>
                             setRegister({
                               ...register,
@@ -483,6 +484,7 @@ function RegisterTabContents() {
                           className="form-control rounded-5"
                           id="password"
                           placeholder="Password"
+                          autoComplete="off"
                           onChange={(e) =>
                             setRegister({
                               ...register,
@@ -501,6 +503,7 @@ function RegisterTabContents() {
                           className="form-control rounded-5"
                           id="confirm-password"
                           placeholder="Password"
+                          autoComplete="off"
                           onChange={(e) =>
                             setRegister({
                               ...register,
