@@ -31,8 +31,10 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
             updatedAt: account.updatedAt,
           },
         });
+        return;
       } else {
         res.status(400).json({ status: false, error: "Account not found" });
+        return;
       }
     },
   };

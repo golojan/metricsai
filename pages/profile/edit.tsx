@@ -8,7 +8,7 @@ import { AccountTypes, Gender } from "../../interfaces/enums";
 import { AuthUserInfo } from "../../interfaces";
 import { getProfileInfo } from "../../libs/queries";
 
-const Profile: NextPage = ({ token }: any) => {
+const EditProfile: NextPage = ({ token }: any) => {
   //
   const [profile, setProfile] = useState<AuthUserInfo>({});
   useEffect(() => {
@@ -315,4 +315,4 @@ const Profile: NextPage = ({ token }: any) => {
   );
 };
 
-export default withAuth(Profile);
+export default withAuth(EditProfile);

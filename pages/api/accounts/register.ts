@@ -10,8 +10,15 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     res.status(400).json({ status: 0, error: error });
   const handleCase: ResponseFunctions = {
     POST: async (req: NextApiRequest, res: NextApiResponse) => {
-      const { accountType, firstname, lastname, email, gender, password } =
-        req.body;
+      const {
+        username,
+        accountType,
+        firstname,
+        lastname,
+        email,
+        gender,
+        password,
+      } = req.body;
       const { Accounts } = await dbCon();
 
       // Encrypt Password//
@@ -20,22 +27,24 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       // Encrypt Password//
 
       const created = await Accounts.create({
+        username: username,
+        email: email,
         firstname: firstname,
         lastname: lastname,
-        email: email,
         accountType: accountType,
         gender: gender,
         passwordKey: password,
         password: hashedPassword,
       }).catch(catcher);
 
-      console.log(created);
+      if (created) {
+        res.status(200).json({ status: true, token: created._id });
+        return;
+      } else {
+        res.status(404).json({ status: false, err: "Error creating account" });
+        return;
+      }
 
-      // if (!created) {
-      //   res.status(404).json({ status: 0, err: "Error creating account" });
-      // } else {
-      //   res.status(200).json({ status: 1, id: created._id });
-      // }
     },
   };
 

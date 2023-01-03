@@ -1,9 +1,29 @@
-import React from "react";
+import React, { useRef, RefObject, useState } from "react";
 import { authLogin } from "../hocs/auth/withAuth";
 import { AccountTypes, Gender } from "../interfaces/enums";
+import validator from "validator";
+import { hasSpacialChars } from "../libs/hasSpacialChars";
 
 function RegisterTabContents() {
+  //
+  const [unState, setUnState] = useState(false);
+  const [emState, setEmState] = useState(false);
+
+  const [unError, setUnError] = useState<string | any>("");
+  const [emError, setEmError] = useState<string | any>("");
+  //
+  const usernameRef: RefObject<HTMLInputElement> =
+    useRef<HTMLInputElement>(null);
+
+  const buttonRef: RefObject<HTMLButtonElement> =
+    useRef<HTMLButtonElement>(null);
+
+  const emailRef: RefObject<HTMLInputElement> = useRef<HTMLInputElement>(null);
+
+  const minUsernameLength = process.env.NEXT_PUBLIC_MIN_USERNAME_LENGTH || 5;
+
   const [register, setRegister] = React.useState({
+    username: "",
     accountType: AccountTypes.GUEST as string,
     firstname: "",
     lastname: "",
@@ -29,6 +49,157 @@ function RegisterTabContents() {
     } else {
       alert("Invalid Username and Password.");
     }
+  };
+
+  const busyURef = () => {
+    setUnError("Checking...");
+    if (usernameRef.current) {
+      usernameRef.current.className =
+        "form-control rounded-5 border-5 bg-blue-100 focus:bg-blue-100";
+      usernameRef.current.disabled = true;
+    }
+    if (buttonRef.current) {
+      buttonRef.current.disabled = true;
+    }
+  };
+  const wrongURef = () => {
+    setUnError("Username is invalid.");
+    if (usernameRef.current) {
+      usernameRef.current.className =
+        "form-control rounded-5 border-5 border-red-500  bg-red-200";
+      usernameRef.current.disabled = false;
+    }
+    if (buttonRef.current) {
+      buttonRef.current.disabled = true;
+    }
+  };
+  const rightURef = () => {
+    setUnError("");
+    if (usernameRef.current) {
+      usernameRef.current.className =
+        "form-control rounded-5 border-5 border-green-300  bg-green-100";
+      usernameRef.current.disabled = false;
+    }
+    if (buttonRef.current) {
+      buttonRef.current.disabled = false;
+    }
+  };
+
+  const existURef = () => {
+    setEmError("Username is already in use.");
+    if (usernameRef.current) {
+      usernameRef.current.className =
+        "form-control rounded-5 border-5 border-red-300  bg-red-100";
+      usernameRef.current.disabled = false;
+    }
+    if (buttonRef.current) {
+      buttonRef.current.disabled = true;
+    }
+  };
+
+  const busyERef = () => {
+    setEmError("Checking email...");
+    if (emailRef.current) {
+      emailRef.current.className =
+        "form-control rounded-5 border-5 bg-blue-100 focus:bg-blue-100";
+      emailRef.current.disabled = true;
+    }
+    if (buttonRef.current) {
+      buttonRef.current.disabled = true;
+    }
+  };
+  const wrongERef = () => {
+    setEmError("Email is invalid.");
+    if (emailRef.current) {
+      emailRef.current.className =
+        "form-control rounded-5 border-5 border-red-500  bg-red-200";
+      emailRef.current.disabled = false;
+    }
+    if (buttonRef.current) {
+      buttonRef.current.disabled = true;
+    }
+  };
+
+  const rightERef = () => {
+    setEmError("");
+    if (emailRef.current) {
+      emailRef.current.className =
+        "form-control rounded-5 border-5 border-green-300  bg-green-100";
+      emailRef.current.disabled = false;
+    }
+    if (buttonRef.current) {
+      buttonRef.current.disabled = false;
+    }
+  };
+
+  const existERef = () => {
+    setEmError("Email is already in use.");
+    if (emailRef.current) {
+      emailRef.current.className =
+        "form-control rounded-5 border-5 border-red-300  bg-red-100";
+      emailRef.current.disabled = false;
+    }
+    if (buttonRef.current) {
+      buttonRef.current.disabled = true;
+    }
+  };
+
+  // check if username is available
+  const checkUsername = async () => {
+    setUnState(true);
+    let newUsername = validator.trim(usernameRef.current?.value as string);
+    newUsername = validator.escape(newUsername);
+    if (
+      validator.isEmpty(newUsername) ||
+      newUsername.length < minUsernameLength ||
+      validator.isEmail(newUsername) ||
+      validator.contains(newUsername, "@") ||
+      hasSpacialChars(newUsername)
+    ) {
+      wrongURef();
+      return;
+    }
+    busyURef();
+    const response = await fetch("/api/accounts/checkusername", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username: newUsername }),
+    });
+    const { status } = await response.json();
+    if (!status) {
+      rightURef();
+    } else {
+      existURef();
+    }
+    setUnState(false);
+  };
+
+  // check if email is available
+  const checkEmail = async () => {
+    setEmState(true);
+    let newEmail = validator.trim(emailRef.current?.value as string);
+    newEmail = validator.escape(newEmail);
+    if (!validator.isEmail(newEmail) || validator.isEmpty(newEmail)) {
+      wrongERef();
+      return;
+    }
+    busyERef();
+    const response = await fetch("/api/accounts/checkemail", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email: newEmail }),
+    });
+    const { status } = await response.json();
+    if (!status) {
+      rightERef();
+    } else {
+      existERef();
+    }
+    setEmState(false);
   };
 
   return (
@@ -241,19 +412,63 @@ function RegisterTabContents() {
 
                   <div className="row">
                     <div className="col-12">
+                      <div className="float-right">
+                        <strong className="text-md text-red-500">
+                          {unError}
+                        </strong>
+                      </div>
+                      <label htmlFor="username" className="text-md ml-1">
+                        Enter Unique Username:
+                      </label>
+                      <div className="form-floating mb-3 d-flex align-items-end ">
+                        <input
+                          type="text"
+                          ref={usernameRef}
+                          required={true}
+                          className="form-control rounded-5 border-5 bg-blue-100 focus:bg-red-100"
+                          id="username"
+                          placeholder="Username"
+                          autoComplete="off"
+                          pattern="[0-9a-zA-Z_]*"
+                          onChange={(e) =>
+                            setRegister({
+                              ...register,
+                              username: e.target.value,
+                            })
+                          }
+                          onBlur={checkUsername}
+                        />
+                        <label htmlFor="username">UNIQUE USERNAME</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="row">
+                    <div className="col-12">
+                      <div className="float-right">
+                        <strong className="text-md text-red-500">
+                          {emError}
+                        </strong>
+                      </div>
+                      <label htmlFor="email" className="text-md ml-1">
+                        Enter Email Address:
+                      </label>
                       <div className="form-floating mb-3 d-flex align-items-end">
                         <input
                           type="email"
+                          ref={emailRef}
                           required={true}
-                          className="form-control rounded-5"
+                          className="form-control rounded-5 border-5 bg-blue-100 focus:bg-red-100"
                           id="emailaddress"
                           placeholder="Email Address"
+                          autoComplete="off"
                           onChange={(e) =>
                             setRegister({
                               ...register,
                               email: e.target.value,
                             })
                           }
+                          onBlur={checkEmail}
                         />
                         <label htmlFor="emailaddress">EMAIL ADRESS</label>
                       </div>
@@ -302,7 +517,10 @@ function RegisterTabContents() {
                   </div>
 
                   <div className="d-grid">
-                    <button className="btn btn-primary rounded-5 w-100 text-decoration-none py-3 fw-bold text-uppercase m-0">
+                    <button
+                      className="btn btn-primary rounded-5 w-100 text-decoration-none py-3 fw-bold text-uppercase m-0"
+                      ref={buttonRef}
+                    >
                       CREATE ACCOUNT
                     </button>
                   </div>

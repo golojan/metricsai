@@ -5,6 +5,10 @@ import { AccountTypes, Gender } from "../interfaces/enums";
 
 const accountsScheme = new mongoose.Schema(
   {
+    username: {
+      type: String,
+      unique: true,
+    },
     schoolid: {
       type: Schema.Types.ObjectId,
       ref: "schools",

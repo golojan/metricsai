@@ -71,7 +71,7 @@ function FixedSecureMenu() {
               <li className="ml-5">
                 <Link
                   className="dropdown-item rounded-3 px-2 py-1 my-1"
-                  href="/profile"
+                  href="/profile/edit"
                 >
                   Edit Profile
                 </Link>

@@ -14,9 +14,11 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       if (account) {
         //Return Acclount//
         console.log(account);
+        return;
       } else {
         //Setup Fresh Account//
         res.status(400).json({ status: false, error: "Account not found" });
+        return;
         console.log("account not found");
       }
     },

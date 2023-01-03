@@ -1,18 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Router from "next/router";
 import nextCookie from "next-cookies";
 const cookie = require("js-cookie");
-
-import { getUserInfo } from "../../libs/queries";
-import { useAtom } from "jotai";
-import { tokenAtom, profileAtom } from "../../store";
 
 // Login & Create session for a given minutes time
 export const authLogin = (token: string) => {
   const expire_time: any = process.env.NEXT_PUBLIC_COOKIE_TIME_IN_MINS || 10;
   const inMinutes = new Date(new Date().getTime() + expire_time * 60 * 1000);
   cookie.set("token", token as string, { expires: inMinutes });
-  Router.push("/metrics");
+  Router.push("/");
 };
 
 export const auth = (ctx: any) => {
@@ -59,7 +55,6 @@ export const withAuth = (WrappedComponent: any) => {
 
       if (!token) {
         Router.push("/auth");
-        
       }
 
       return () => {

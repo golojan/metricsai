@@ -33,6 +33,7 @@ export default async function handler(
                   status: true,
                   token: account._id,
                 });
+                return;
               }
 
               if (accountType === AccountTypes.STUDENT) {
@@ -41,6 +42,7 @@ export default async function handler(
                   status: true,
                   token: account._id,
                 });
+                return;
               }
 
               if (accountType === AccountTypes.LECTURER) {
@@ -49,16 +51,19 @@ export default async function handler(
                   status: true,
                   token: account._id,
                 });
+                return;
               }
             } else {
               res
                 .status(400)
                 .json({ status: false, error: "Invalid Login detailes" });
+                return;
             }
           } else {
             res
               .status(400)
               .json({ status: false, error: "Invalid Login detailes" });
+              return;
           }
         })
         .catch(catcher);

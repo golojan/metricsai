@@ -11,6 +11,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       res
         .status(200)
         .json({ status: false, err: "Only GET Method is allowed" });
+        return;
     },
     GET: async (req: NextApiRequest, res: NextApiResponse) => {
       const { Accounts, Schools } = await dbCon();
@@ -20,8 +21,10 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
           status: true,
           accounts: accounts,
         });
+        return;
       } else {
         res.status(404).json({ status: false, err: "Accounts not found" });
+        return;
       }
     },
   };

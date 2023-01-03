@@ -33,8 +33,10 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
           status: true,
           accounts: accounts,
         });
+        return;
       } else {
         res.status(404).json({ status: false, err: "Indicators not found" });
+        return;
       }
     },
   };

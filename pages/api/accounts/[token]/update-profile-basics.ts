@@ -29,8 +29,10 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
           status: true,
           data: saved,
         });
+        return;
       } else {
         res.status(400).json({ status: false, error: "Account not found" });
+        return;
       }
     },
   };
