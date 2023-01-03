@@ -237,7 +237,6 @@ function RegisterTabContents() {
                     id="reg_guest"
                     name="accountType"
                     value={AccountTypes.GUEST}
-                    defaultChecked
                     onChange={(e) =>
                       setRegister({ ...register, accountType: e.target.value })
                     }
