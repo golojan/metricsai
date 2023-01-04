@@ -5,7 +5,7 @@ import SocialMenu from "./SocialMenu";
 function TopBar() {
   return (
     <>
-      <div className="w-full bg-gradient-to-b from-[#5e87c4] to-[#3266af] min-h-[10px] m-0 pt-[50px] pb-[10px]">
+      {/* <div className="w-full bg-gradient-to-b from-[#5e87c4] to-[#3266af] min-h-[10px] m-0 pt-[50px] pb-[10px]">
         <div className="container">
           <div className="flex flex-row justify-between items-center h-full">
             <div className="row">
@@ -56,7 +56,7 @@ function TopBar() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

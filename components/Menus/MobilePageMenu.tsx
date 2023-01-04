@@ -12,7 +12,7 @@ function MobilePageMenu() {
         <div className="pb-4 mb-4">
           <Link href="/" className="text-decoration-none">
             <img
-              src="/img/logo.png"
+              src="/img/metrics.png"
               className="img-fluid logo"
               alt="brand-logo"
             />

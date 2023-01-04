@@ -10,11 +10,11 @@ function MobileSecureMenu() {
       id="offcanvasExample"
     >
       <div className="sidebar-nav mb-3">
-        <div className="pb-4 mb-4">
+        <div className="pb-4 mb-4 w-full">
           <Link href="/" className="text-decoration-none">
             <img
-              src="/img/logo.png"
-              className="img-fluid logo"
+              src="/img/metrics.png"
+              className="img-fluid logo w-full"
               alt="brand-logo"
             />
           </Link>
@@ -42,7 +42,7 @@ function MobileSecureMenu() {
             </Link>
           </li>
 
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <Link href="/" className="nav-link">
               <span className="material-icons me-3">explore</span>
               <span>Explore</span>
@@ -54,7 +54,7 @@ function MobileSecureMenu() {
               <span className="material-icons me-3">school</span>
               Academia
             </Link>
-          </li>
+          </li> */}
 
           <li className="nav-item dropdown">
             <Link

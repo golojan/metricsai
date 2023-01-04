@@ -9,30 +9,12 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const handleCase: ResponseFunctions = {
     GET: async (req: NextApiRequest, res: NextApiResponse) => {
       const { token } = req.query;
-
       const { Accounts } = await dbCon();
       const account = await Accounts.findOne({ _id: token }).catch(catcher);
-
       if (account) {
         res.status(200).json({
           status: true,
-          data: {
-            _id: account._id,
-            username: account.username,
-            firstname: account.firstname,
-            lastname: account.lastname,
-            email: account.email,
-            accountType: account.accountType,
-            gender: account.gender,
-            birthday: account.birthday,
-            picture: account.picture,
-            schoolCode: account.schoolCode,
-            scopusId: account.scopusId,
-            orcidId: account.orcidId,
-            googleScholarId: account.googleScholarId,
-            createdAt: account.createdAt,
-            updatedAt: account.updatedAt,
-          },
+          username: account.username,
         });
         return;
       } else {

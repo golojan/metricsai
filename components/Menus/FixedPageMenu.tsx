@@ -5,10 +5,10 @@ function FixedPageMenu() {
   return (
     <div className="ps-0 m-none fix-sidebar">
       <div className="sidebar-nav mb-3">
-        <div className="pb-4 mb-4 d-none">
+        <div className="pb-4 mb-4">
           <Link href="/" className="text-decoration-none">
             <img
-              src="/img/logo.png"
+              src="/img/metrics.png"
               className="img-fluid logo"
               alt="brand-logo"
             />

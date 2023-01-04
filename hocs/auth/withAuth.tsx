@@ -1,14 +1,22 @@
 import React, { useEffect } from "react";
 import Router from "next/router";
 import nextCookie from "next-cookies";
-const cookie = require("js-cookie");
+import { getUserName } from "../../libs/queries";
+import cookie from "js-cookie";
 
 // Login & Create session for a given minutes time
 export const authLogin = (token: string) => {
   const expire_time: any = process.env.NEXT_PUBLIC_COOKIE_TIME_IN_MINS || 10;
   const inMinutes = new Date(new Date().getTime() + expire_time * 60 * 1000);
-  cookie.set("token", token as string, { expires: inMinutes });
-  Router.push("/");
+  getUserName(token)
+    .then((username) => {
+      cookie.set("token", token as string, { expires: inMinutes });
+      cookie.set("username", username as string, { expires: inMinutes });
+      Router.push(`/${username}`);
+    })
+    .catch((err) => {
+      authlogout();
+    });
 };
 
 export const auth = (ctx: any) => {

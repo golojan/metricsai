@@ -16,6 +16,7 @@ export default async function handler(
     POST: async (req: NextApiRequest, res: NextApiResponse) => {
       const { username, password, accountType } = req.body;
       const { Accounts, Schools } = await dbCon();
+
       await Accounts.findOne({
         email: username,
       })
@@ -57,13 +58,13 @@ export default async function handler(
               res
                 .status(400)
                 .json({ status: false, error: "Invalid Login detailes" });
-                return;
+              return;
             }
           } else {
             res
               .status(400)
               .json({ status: false, error: "Invalid Login detailes" });
-              return;
+            return;
           }
         })
         .catch(catcher);

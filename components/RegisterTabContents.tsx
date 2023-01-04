@@ -3,6 +3,7 @@ import { authLogin } from "../hocs/auth/withAuth";
 import { AccountTypes, Gender } from "../interfaces/enums";
 import validator from "validator";
 import { hasSpacialChars } from "../libs/hasSpacialChars";
+import Select from "react-select";
 
 function RegisterTabContents() {
   //
@@ -228,6 +229,26 @@ function RegisterTabContents() {
         <div className="feeds">
           <div className="bg-white px-4 py-4 feed-item rounded-4 shadow-sm mb-3 faq-page">
             <form onSubmit={handleRegister}>
+              <div className="row justify-content-center">
+                <div className="col-lg-12">
+                  <div className="row mt-3">
+                    <div className="col-12">
+                      <div className="w-full text-lg my-1">
+                        Select Your institution
+                      </div>
+                      <div className=" mb-0 d-flex align-items-end">
+                        <Select
+                          name="university"
+                          placeholder="Select your university"
+                          className="w-full rounded-5 text-lg clear-both"
+                          options={[]}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div className="row py-3 gy-3 m-0">
                 <div className="langauge-item col-12 col-md-4 px-1 mt-2">
                   <input
@@ -236,6 +257,7 @@ function RegisterTabContents() {
                     className="btn-check"
                     id="reg_guest"
                     name="accountType"
+                    disabled={true}
                     value={AccountTypes.GUEST}
                     onChange={(e) =>
                       setRegister({ ...register, accountType: e.target.value })
@@ -304,6 +326,7 @@ function RegisterTabContents() {
                   </label>
                 </div>
               </div>
+
               <div className="row justify-content-center">
                 <div className="col-lg-12">
                   <div className="row">

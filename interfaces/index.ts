@@ -18,6 +18,7 @@ export interface AuthUserInfo {
   picture?: string;
   firstname?: string;
   lastname?: string;
+  username?: string;
   email?: string;
   gender?: string;
   mobile?: string;

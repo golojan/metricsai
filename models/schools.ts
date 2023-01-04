@@ -9,17 +9,15 @@ const schoolsScheme = new mongoose.Schema(
       type: String,
       default: "/assets/img/logo-icon.png",
     },
-    owner: { type: Boolean, default: false },
-    domain: { type: String, unique: true },
-    shortname: { type: String, unique: true },
+
+    domain: { type: String },
     name: { type: String },
-    state: {
-      type: String,
-      enum: Object.values(StateTypes),
-    },
+    shortname: { type: String, unique: true },
+    state: { type: String },
     location: String,
-    ownedBy: { type: String, enum: Object.values(OwnerTypes) },
+    ownedBy: { type: String },
     founded: Number,
+
     ranking: {
       googlePresence: { type: Number, default: 0 },
       citations: { type: Number, default: 0 },

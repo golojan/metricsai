@@ -1,15 +1,17 @@
 import Link from "next/link";
 import React from "react";
 import { authlogout } from "../../hocs/auth/withAuth";
+import cookie from "js-cookie";
 
 function FixedSecureMenu() {
+  const username = cookie.get("username");
   return (
     <div className="ps-0 m-none fix-sidebar">
       <div className="sidebar-nav mb-3">
-        <div className="pb-4 mb-4 d-none">
+        <div className="pb-4 mb-4">
           <Link href="/" className="text-decoration-none">
             <img
-              src="/img/logo.png"
+              src="/img/metrics.png"
               className="img-fluid logo"
               alt="brand-logo"
             />
@@ -17,7 +19,7 @@ function FixedSecureMenu() {
         </div>
         <ul className="navbar-nav justify-content-end flex-grow-1">
           <li className="nav-item">
-            <Link href="/" className="nav-link active">
+            <Link href={`/${username}`} className="nav-link active">
               <span className="material-icons me-3">
                 <img
                   src="/img/logo.png"
@@ -38,7 +40,7 @@ function FixedSecureMenu() {
             </Link>
           </li>
 
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <Link href="/" className="nav-link">
               <span className="material-icons me-3">explore</span>
               <span>Explore</span>
@@ -50,7 +52,7 @@ function FixedSecureMenu() {
               <span className="material-icons me-3">school</span>
               Academia
             </Link>
-          </li>
+          </li> */}
 
           <li className="nav-item dropdown">
             <Link

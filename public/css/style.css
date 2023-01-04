@@ -395,6 +395,12 @@ h6 {
   img.img-fluid.logo-mobile {
     height: 36px;
   }
+
+  img.img-profile.logo-mobile {
+    height: 80px;
+  }
+
+
   button.ms-auto.btn.btn-primary.ln-0 {
     padding: 2px 3px !important;
     width: 33px;
@@ -420,6 +426,9 @@ h6 {
   }
   img.img-fluid.logo-mobile {
     height: 36px;
+  }
+  img.img-profile.logo-mobile {
+    height: 80px;
   }
   button.ms-auto.btn.btn-primary.ln-0 {
     padding: 2px 3px !important;
