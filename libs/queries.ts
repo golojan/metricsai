@@ -18,8 +18,8 @@ export const getUserName = async (token: string) => {
   }
 };
 
-export const getProfileInfo = async (email: string) => {
-  const response = await fetch(`/api/accounts/${email}/info`);
+export const getProfileInfo = async (token: string) => {
+  const response = await fetch(`/api/accounts/${token}/profile`);
   const membership = await response.json();
   if (membership.status) {
     return membership.data;

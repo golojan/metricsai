@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { RefObject, useEffect, useRef, useState } from "react";
 import Layout from "../../components/Layout";
 
 import { withAuth } from "../../hocs/auth/withAuth";
@@ -8,14 +8,124 @@ import { AccountTypes, Gender } from "../../interfaces/enums";
 import { AuthUserInfo } from "../../interfaces";
 import { getProfileInfo } from "../../libs/queries";
 
+import validator from "validator";
+import { hasSpacialChars } from "../../libs/hasSpacialChars";
+
 const EditProfile: NextPage = ({ token }: any) => {
-  //
+  // Username Processing System //
+  const [unState, setUnState] = useState(false);
+  const [unError, setUnError] = useState<string | any>("");
+  const usernameRef: RefObject<HTMLInputElement> =
+    useRef<HTMLInputElement>(null);
+  const buttonRef: RefObject<HTMLButtonElement> =
+    useRef<HTMLButtonElement>(null);
+  const minUsernameLength = process.env.NEXT_PUBLIC_MIN_USERNAME_LENGTH || 5;
+
+  const busyURef = () => {
+    setUnError("Checking...");
+    if (usernameRef.current) {
+      usernameRef.current.className =
+        "form-control rounded-5 border-5 bg-blue-100 focus:bg-blue-100";
+      usernameRef.current.disabled = true;
+    }
+    if (buttonRef.current) {
+      buttonRef.current.disabled = true;
+    }
+  };
+  const wrongURef = () => {
+    setUnError("Username is invalid.");
+    if (usernameRef.current) {
+      usernameRef.current.className =
+        "form-control rounded-5 border-5 border-red-500  bg-red-200";
+      usernameRef.current.disabled = false;
+    }
+    if (buttonRef.current) {
+      buttonRef.current.disabled = true;
+    }
+  };
+  const rightURef = () => {
+    setUnError("");
+    if (usernameRef.current) {
+      usernameRef.current.className =
+        "form-control rounded-5 border-5 border-green-300  bg-green-100";
+      usernameRef.current.disabled = false;
+    }
+    if (buttonRef.current) {
+      buttonRef.current.disabled = false;
+    }
+  };
+
+  const existURef = () => {
+    setUnError("Username is already in use.");
+    if (usernameRef.current) {
+      usernameRef.current.className =
+        "form-control rounded-5 border-5 border-red-300  bg-red-100";
+      usernameRef.current.disabled = false;
+    }
+    if (buttonRef.current) {
+      buttonRef.current.disabled = true;
+    }
+  };
+
+  // check if username is available
+  const checkUsername = async () => {
+    setUnState(true);
+    let newUsername = validator.trim(usernameRef.current?.value as string);
+    newUsername = validator.escape(newUsername);
+    if (
+      validator.isEmpty(newUsername) ||
+      newUsername.length < minUsernameLength ||
+      validator.isEmail(newUsername) ||
+      validator.contains(newUsername, "@") ||
+      hasSpacialChars(newUsername)
+    ) {
+      wrongURef();
+      return;
+    }
+    busyURef();
+    const response = await fetch("/api/accounts/checkusername", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username: newUsername }),
+    });
+    const { status } = await response.json();
+    if (!status) {
+      rightURef();
+    } else {
+      existURef();
+    }
+    setUnState(false);
+  };
+
+  // Username Processing System //
+
   const [profile, setProfile] = useState<AuthUserInfo>({});
   useEffect(() => {
     getProfileInfo(token).then((res: AuthUserInfo) => {
       setProfile(res);
     });
   }, [token]);
+
+  const handleUsernameUpdate = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const response = await fetch(
+      `/api/accounts/${token}/update-profile-username`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username: profile.username }),
+      }
+    );
+    const { status } = await response.json();
+    alert("done");
+    if (status) {
+    } else {
+    }
+  };
 
   const handleProfileUpdate = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -70,6 +180,62 @@ const EditProfile: NextPage = ({ token }: any) => {
                   </header>
                 </div>
               </div>
+              <div className="mb-3"></div>
+              <div className="bg-white px-4 py-4 feed-item rounded-4 shadow-sm mb-3 faq-page">
+                <div className="mb-3">
+                  <h5 className="lead fw-bold text-body ">Update Username</h5>
+                  <p className="mb-0">
+                    Your username is your unique identity on the platform. It is
+                    a good idea to use a combination of your real name.
+                  </p>
+                </div>
+                <form onSubmit={handleUsernameUpdate}>
+                  <div className="row justify-content-center">
+                    <div className="col-12">
+                      <div className="float-right">
+                        <strong className="text-md text-red-500">
+                          {unError}
+                        </strong>
+                      </div>
+                      <label htmlFor="username" className="text-md ml-1">
+                        Enter Unique Username:
+                      </label>
+                      <div className="form-floating mb-3 d-flex align-items-end ">
+                        <input
+                          type="text"
+                          ref={usernameRef}
+                          required={true}
+                          className="form-control rounded-5 border-5 bg-blue-100 focus:bg-red-100"
+                          id="username"
+                          placeholder="Username"
+                          autoComplete="off"
+                          pattern="[0-9a-zA-Z_]*"
+                          value={profile.username}
+                          onChange={(e) =>
+                            setProfile({
+                              ...profile,
+                              username: e.target.value,
+                            })
+                          }
+                          onBlur={checkUsername}
+                        />
+                        <label htmlFor="username">UNIQUE USERNAME</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="d-grid">
+                    <button
+                      disabled={true}
+                      name="username"
+                      className="btn btn-primary rounded-5 w-100 text-decoration-none py-3 fw-bold text-uppercase m-0"
+                      ref={buttonRef}
+                    >
+                      UPDATE USERNAME
+                    </button>
+                  </div>
+                </form>
+              </div>
+
               <div className="mb-3"></div>
               <div className="bg-white px-4 py-4 feed-item rounded-4 shadow-sm mb-3 faq-page">
                 <div className="mb-1">

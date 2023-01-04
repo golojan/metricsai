@@ -87,7 +87,7 @@ function RegisterTabContents() {
   };
 
   const existURef = () => {
-    setEmError("Username is already in use.");
+    setUnError("Username is already in use.");
     if (usernameRef.current) {
       usernameRef.current.className =
         "form-control rounded-5 border-5 border-red-300  bg-red-100";
