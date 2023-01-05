@@ -52,6 +52,7 @@ function RegisterTabContents() {
     password: "",
     confirmpassword: "",
     schoolId: "",
+    departmentId: "",
   });
 
   const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -261,7 +262,7 @@ function RegisterTabContents() {
                   <div className="row mt-3">
                     <div className="col-12">
                       <div className="w-full text-lg my-1">
-                        Select Your institution
+                        Select your institution
                       </div>
                       <div className=" mb-0 d-flex align-items-end">
                         <Select
@@ -271,6 +272,30 @@ function RegisterTabContents() {
                           options={schoolOptions}
                           onChange={(e) => handleSelectChange(e)}
                         />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="row mt-3">
+                    <div className="col-12">
+                      <div className="w-full text-lg my-1">
+                        Enter your institution
+                      </div>
+                      <div className="form-floating mb-3 d-flex align-items-center">
+                        <input
+                          type="text"
+                          className="form-control rounded-5"
+                          value={register.departmentId}
+                          id="department"
+                          onChange={(e) =>
+                            setRegister({
+                              ...register,
+                              departmentId: e.target.value,
+                            })
+                          }
+                        />
+                        <label htmlFor="department">
+                          ENTER YOUR DEPARTMENT
+                        </label>
                       </div>
                     </div>
                   </div>
