@@ -18,6 +18,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         email,
         gender,
         password,
+        schoolId,
       } = req.body;
       const { Accounts } = await dbCon();
 
@@ -35,6 +36,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         gender: gender,
         passwordKey: password,
         password: hashedPassword,
+        schoolId: schoolId,
       }).catch(catcher);
 
       if (created) {
