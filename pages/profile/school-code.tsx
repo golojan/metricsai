@@ -9,6 +9,7 @@ import { getProfileInfo, getSchools } from "./../../libs/queries";
 import Select from "react-select";
 
 const SchoolCode: NextPage = ({ token }: any) => {
+
   const [schools, setSchools] = useState<[SchoolInfo]>([{} as SchoolInfo]);
   const [profile, setProfile] = useState<AuthUserInfo>({});
 

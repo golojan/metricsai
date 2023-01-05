@@ -1,11 +1,14 @@
-import React, { useRef, RefObject, useState } from "react";
+import React, { useRef, RefObject, useState, useEffect } from "react";
 import { authLogin } from "../hocs/auth/withAuth";
 import { AccountTypes, Gender } from "../interfaces/enums";
 import validator from "validator";
 import { hasSpacialChars } from "../libs/hasSpacialChars";
 import Select from "react-select";
+import { SchoolInfo } from "../interfaces";
+import { getSchools } from "../libs/queries";
 
 function RegisterTabContents() {
+  const [done, setDone] = useState<boolean>(true);
   //
   const [unState, setUnState] = useState(false);
   const [emState, setEmState] = useState(false);
@@ -13,6 +16,21 @@ function RegisterTabContents() {
   const [unError, setUnError] = useState<string | any>("");
   const [emError, setEmError] = useState<string | any>("");
   //
+  const [schools, setSchools] = useState<[SchoolInfo]>([{} as SchoolInfo]);
+
+  useEffect(() => {
+    if (done) {
+      getSchools().then((res) => {
+        setSchools(res);
+      });
+    }
+  }, [done]);
+
+  const schoolOptions = schools.map((school: SchoolInfo) => ({
+    value: school._id,
+    label: school.name,
+  }));
+
   const usernameRef: RefObject<HTMLInputElement> =
     useRef<HTMLInputElement>(null);
 
@@ -241,7 +259,7 @@ function RegisterTabContents() {
                           name="university"
                           placeholder="Select your university"
                           className="w-full rounded-5 text-lg clear-both"
-                          options={[]}
+                          options={schoolOptions}
                         />
                       </div>
                     </div>
