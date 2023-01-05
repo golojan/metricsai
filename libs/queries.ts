@@ -1,5 +1,18 @@
 const cookie = require("js-cookie");
 
+
+export const getConnections = async (token: string) => {
+  const response = await fetch(`/api/accounts/${token}/connections`);
+  const connections = await response.json();
+  if (connections.status) {
+    return connections.data;
+  } else {
+    return {};
+  }
+};
+
+
+
 export const fetchUserInfo = () => {
   const token = cookie.get("token");
   return fetch(`/api/accounts/${token}/info`)

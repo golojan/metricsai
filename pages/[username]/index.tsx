@@ -1,7 +1,6 @@
+import { RefObject, useRef } from "react";
 import { NextPage } from "next";
 import PublicLayout from "../../components/PublicLayout";
-import SearchBarLarge from "../../components/SearchBarLarge";
-import HomeTabsBar from "../../components/HomeTabsBar";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { AuthUserInfo, SchoolInfo } from "../../interfaces";
@@ -25,6 +24,27 @@ const Home: NextPage = () => {
     });
   }, [username]);
 
+  const connectButtonRef: RefObject<HTMLInputElement> =
+    useRef<HTMLInputElement>(null);
+
+  // Set the connection on and off //
+  const [connected, setConnected] = useState(false);
+
+  const handleConnect = () => {
+    const connectButton = connectButtonRef.current;
+    if (connectButton) {
+      if (connectButton.checked) {
+        connectButton.parentElement?.classList.add("active");
+        connectButton.parentElement?.classList.remove("inactive");
+        setConnected(false);
+      } else {
+        connectButton.parentElement?.classList.remove("active");
+        connectButton.parentElement?.classList.add("inactive");
+        setConnected(false);
+      }
+    }
+  };
+
   return (
     <PublicLayout>
       <main className="col col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
@@ -38,10 +58,6 @@ const Home: NextPage = () => {
                 >
                   arrow_back
                 </Link>
-                <p className="ms-2 mb-0 fw-bold text-body fs-6 ml-3">
-                  David Nweze Umahi Federal University of Medical Sciences,
-                  Uburu.
-                </p>
               </div>
               <Link
                 href="#"
@@ -62,7 +78,7 @@ const Home: NextPage = () => {
                 <div className="ms-3 clear-both">
                   <h6 className="mb-0 d-flex align-items-start text-body fs-6 fw-bold">
                     {` ${profile.lastname} ${profile.firstname} `}
-                    <span className="ms-2 material-icons bg-gray-400 p-0 md-16 fw-bold text-white rounded-circle ov-icon">
+                    <span className="ms-2 material-icons bg-green-700 p-0 md-16 fw-bold text-white rounded-circle ov-icon">
                       done
                     </span>
                   </h6>
@@ -72,35 +88,44 @@ const Home: NextPage = () => {
                   </span>
                 </div>
 
+                {/*
                 <div
                   className="ms-auto btn-group"
                   role="group"
                   aria-label="Basic checkbox toggle button group"
                 >
-                  <input type="checkbox" className="btn-check" id="btncheck1" />
+                  <input
+                    type="checkbox"
+                    className="btn-check"
+                    id="btnConnect"
+                    autoComplete="off"
+                    defaultChecked={connected}
+                    defaultValue={"on"}
+                    ref={connectButtonRef}
+                    onChange={handleConnect}
+                  />
                   <label
-                    className="btn btn-outline-primary btn-sm px-3 rounded-pill"
-                    htmlFor="btncheck1"
+                    className="btn btn-outline-primary btn-sm px-3 mx-1 rounded-pill"
+                    htmlFor="btnConnect"
                   >
-                    <span className="follow">connect</span>
+                    <span className="follow">+ connect</span>
                     <span className="following d-none">connected</span>
                   </label>
-                </div>
+                </div> */}
               </div>
 
               <div className="p-3">
-                {" "}
                 <p className="d-flex flex-row align-items-center mb-3">
                   <span className="material-icons me-2 rotate-320 text-muted md-16">
                     link
                   </span>
-                  <a href={`/${username}`} className="text-decoration-none">
-                    {`metrics.com/${username}`}
-                  </a>
+                  <Link href={`/${username}`} className="text-decoration-none">
+                    {`@${username}`}
+                  </Link>
                   <span className="material-icons me-2 text-muted md-16 ms-4">
                     calendar_today
                   </span>
-                  <span>Joined on Feb 2021</span>
+                  <span>Joined Feb 2021</span>
 
                   <span className="material-icons me-2 text-muted md-16 ms-4">
                     face
@@ -108,10 +133,14 @@ const Home: NextPage = () => {
                   <span>
                     <strong>0</strong> Views
                   </span>
+
+                  <span className="material-icons me-2 text-muted md-16 ms-4">
+                    face
+                  </span>
+                  <span>
+                    <strong>0</strong> Matrics
+                  </span>
                 </p>
-                <div className="p mb-2 p-2 bg-[#edf2f6] rounded-4 fs-6 text-gray-700 hover:text-gray-700">
-                  {profile.aboutMe}
-                </div>
                 <hr />
                 <div className="d-flex followers">
                   <div className="ms-0 ps-0">
@@ -154,6 +183,31 @@ const Home: NextPage = () => {
                     </div> */}
                   </div>
                 </div>
+                <hr />
+                <div className="mb-0 text-body fs-6 px-3 text-gray-700">
+                  <div className="row">
+                    <div className="col-5">
+                      <span className="text-muted">University:</span>
+                      <p className="mb-0">
+                        {schools.find((s) => s._id === profile.schoolId)?.name}
+                      </p>
+                    </div>
+                    <div className="col-5">
+                      <span className="text-muted">Department:</span>
+                      <p className="mb-0">{profile.departmentId}</p>
+                    </div>
+                    <div className="col-2">
+                      <span className="text-muted">State:</span>
+                      <p className="mb-0">
+                        {schools.find((s) => s._id === profile.schoolId)?.state}
+                      </p>
+                    </div>
+                  </div>{" "}
+                </div>
+                <div className="p my-3 p-2 bg-[#edf2f6] rounded-4 fs-6 text-gray-700 hover:text-gray-700">
+                  {profile.aboutMe}
+                </div>
+
                 <hr className="mb-2" />
                 <div className="row d-flex mt-0">
                   <div className="col-12 mb-2 mt-0 text-black text-lg">

@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import Schools from "./schools";
 import Accounts from "./accounts";
+import Connections from "./connections";
 
 const { MONGOOSE_URI } = process.env;
 
@@ -14,5 +15,6 @@ export const dbCon = async () => {
     conn,
     Schools,
     Accounts,
+    Connections,
   };
 };

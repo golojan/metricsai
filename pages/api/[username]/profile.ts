@@ -20,6 +20,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
           status: true,
           data: {
             _id: account._id,
+            schoolId: account.schoolId,
+            departmentId: account.departmentId,
             username: account.username,
             firstname: account.firstname,
             lastname: account.lastname,
