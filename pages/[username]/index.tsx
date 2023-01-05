@@ -83,9 +83,6 @@ const Home: NextPage = () => {
                     </span>
                   </h6>
                   <p className="text-muted mb-0">{`@${profile.username}`}</p>
-                  <span className="clear-both text-md">
-                    Medicine and Surgery
-                  </span>
                 </div>
 
                 {/*

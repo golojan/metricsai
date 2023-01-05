@@ -51,6 +51,7 @@ function RegisterTabContents() {
     email: "",
     password: "",
     confirmpassword: "",
+    schoolId: "",
   });
 
   const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -81,6 +82,7 @@ function RegisterTabContents() {
       buttonRef.current.disabled = true;
     }
   };
+
   const wrongURef = () => {
     setUnError("Username is invalid.");
     if (usernameRef.current) {
@@ -221,6 +223,13 @@ function RegisterTabContents() {
     setEmState(false);
   };
 
+  const handleSelectChange = (selectedOption: any) => {
+    setRegister({
+      ...register,
+      schoolId: selectedOption.value,
+    });
+  };
+
   return (
     <>
       <div
@@ -260,6 +269,7 @@ function RegisterTabContents() {
                           placeholder="Select your university"
                           className="w-full rounded-5 text-lg clear-both"
                           options={schoolOptions}
+                          onChange={(e) => handleSelectChange(e)}
                         />
                       </div>
                     </div>
