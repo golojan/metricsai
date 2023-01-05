@@ -23,6 +23,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
             username: account.username,
             firstname: account.firstname,
             lastname: account.lastname,
+            aboutMe: account.aboutMe,
             email: account.email,
             accountType: account.accountType,
             gender: account.gender,

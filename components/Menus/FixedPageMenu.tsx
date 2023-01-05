@@ -1,20 +1,22 @@
 import Link from "next/link";
 import React from "react";
+import { AdBoxSlim } from "../AdBox";
+import MetricsLogo from "../MetricsLogo";
 
 function FixedPageMenu() {
   return (
     <div className="ps-0 m-none fix-sidebar">
       <div className="sidebar-nav mb-3">
-        <div className="pb-4 mb-4">
-          <Link href="/" className="text-decoration-none">
-            <img
-              src="/img/metrics.png"
-              className="img-fluid logo"
-              alt="brand-logo"
-            />
-          </Link>
-        </div>
+        <MetricsLogo />
+        <AdBoxSlim />
         <ul className="navbar-nav justify-content-end flex-grow-1">
+          <li className="nav-item">
+            <Link href="/" className="nav-link">
+              <span className="material-icons me-3">local_fire_department</span>
+              <span>Trending</span>
+            </Link>
+          </li>
+
           <li className="nav-item">
             <Link href="/" className="nav-link active">
               <span className="material-icons me-3">
@@ -27,13 +29,6 @@ function FixedPageMenu() {
                 />
               </span>
               <span>Metrics</span>
-            </Link>
-          </li>
-
-          <li className="nav-item">
-            <Link href="/" className="nav-link">
-              <span className="material-icons me-3">local_fire_department</span>
-              <span>Trending</span>
             </Link>
           </li>
         </ul>

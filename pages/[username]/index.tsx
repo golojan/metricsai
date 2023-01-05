@@ -4,17 +4,22 @@ import SearchBarLarge from "../../components/SearchBarLarge";
 import HomeTabsBar from "../../components/HomeTabsBar";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { AuthUserInfo } from "../../interfaces";
+import { AuthUserInfo, SchoolInfo } from "../../interfaces";
 import { useEffect, useState } from "react";
-import { getProfile } from "../../libs/queries";
+import { getProfile, getSchools } from "../../libs/queries";
 
 const cookie = require("js-cookie");
 const Home: NextPage = () => {
   const router = useRouter();
   const { username } = router.query;
   //
+  const [schools, setSchools] = useState<[SchoolInfo]>([{} as SchoolInfo]);
   const [profile, setProfile] = useState<AuthUserInfo>({});
+
   useEffect(() => {
+    getSchools().then((res) => {
+      setSchools(res);
+    });
     getProfile(username as string).then((res: AuthUserInfo) => {
       setProfile(res);
     });
@@ -26,18 +31,18 @@ const Home: NextPage = () => {
         <div className="main-content">
           <div className="tab-content" id="pills-tabContent">
             <div className="mb-4 d-flex align-items-center">
-              <div className="d-flex align-items-center">
+              <div className="d-flex align-items-center px-2">
                 <Link
                   href={`/${username}`}
-                  className="material-icons text-dark text-decoration-none m-none me-3"
+                  className="material-icons text-dark text-decoration-none m-none"
                 >
                   arrow_back
                 </Link>
-                <p className="ms-2 mb-0 fw-bold text-body fs-6">
-                  {`${profile.lastname} ${profile.firstname}`}
+                <p className="ms-2 mb-0 fw-bold text-body fs-6 ml-3">
+                  David Nweze Umahi Federal University of Medical Sciences,
+                  Uburu.
                 </p>
               </div>
-
               <Link
                 href="#"
                 className="text-decoration-none material-icons md-20 ms-auto text-muted"
@@ -48,13 +53,13 @@ const Home: NextPage = () => {
 
             <div className="bg-white rounded shadow-sm profile">
               {/* <div className="w-full min-h-[200px] bg-black rounded-t-lg"></div> */}
-              <div className="d-flex align-items-center px-3 pt-3">
+              <div className="d-flex align-items-center px-3 pt-4">
                 <img
                   src={`${profile.picture}`}
                   className="img-profile rounded-circle"
                   alt="profile-img"
                 />
-                <div className="ms-3">
+                <div className="ms-3 clear-both">
                   <h6 className="mb-0 d-flex align-items-start text-body fs-6 fw-bold">
                     {` ${profile.lastname} ${profile.firstname} `}
                     <span className="ms-2 material-icons bg-gray-400 p-0 md-16 fw-bold text-white rounded-circle ov-icon">
@@ -62,6 +67,9 @@ const Home: NextPage = () => {
                     </span>
                   </h6>
                   <p className="text-muted mb-0">{`@${profile.username}`}</p>
+                  <span className="clear-both text-md">
+                    Medicine and Surgery
+                  </span>
                 </div>
 
                 <div
@@ -74,17 +82,14 @@ const Home: NextPage = () => {
                     className="btn btn-outline-primary btn-sm px-3 rounded-pill"
                     htmlFor="btncheck1"
                   >
-                    <span className="follow">+ Follow</span>
-                    <span className="following d-none">Following</span>
+                    <span className="follow">connect</span>
+                    <span className="following d-none">connected</span>
                   </label>
                 </div>
               </div>
+
               <div className="p-3">
-                {/* <p className="mb-2 fs-6">
-                  The standard chunk of Lorem Ipsum used since is reproduced.
-                  Contrary to popular belief, Lorem Ipsum is not simply random
-                  text. It has roots in a piece of classical Latin literature..
-                </p> */}
+                {" "}
                 <p className="d-flex flex-row align-items-center mb-3">
                   <span className="material-icons me-2 rotate-320 text-muted md-16">
                     link
@@ -104,6 +109,9 @@ const Home: NextPage = () => {
                     <strong>0</strong> Views
                   </span>
                 </p>
+                <div className="p mb-2 p-2 bg-[#edf2f6] rounded-4 fs-6 text-gray-700 hover:text-gray-700">
+                  {profile.aboutMe}
+                </div>
                 <hr />
                 <div className="d-flex followers">
                   <div className="ms-0 ps-0">

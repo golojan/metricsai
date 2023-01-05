@@ -1,7 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { dbCon } from "../../../../models";
 import { ResponseFunctions } from "../../../../interfaces";
-const bcrypt = require("bcryptjs");
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const method: keyof ResponseFunctions = req.method as keyof ResponseFunctions;
@@ -10,40 +9,15 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const handleCase: ResponseFunctions = {
     POST: async (req: NextApiRequest, res: NextApiResponse) => {
       const { token } = req.query;
-      const {
-        schoolid,
-        firstname,
-        lastname,
-        aboutMe,
-        middlename,
-        email,
-        mobile,
-        membership,
-        role,
-        passwordKey,
-      } = req.body;
+      const { schoolId, departmentId } = req.body;
 
       const { Accounts } = await dbCon();
-
-      // Encrypt Password//
-      const salt = bcrypt.genSaltSync(10);
-      var hashedPassword = bcrypt.hashSync(passwordKey, salt);
-      // Encrypt Password//
 
       const saved = await Accounts.updateOne(
         { _id: token },
         {
-          schoolid: schoolid,
-          firstname: firstname,
-          lastname: lastname,
-          aboutMe: aboutMe,
-          middlename: middlename,
-          email: email,
-          mobile: mobile,
-          accountType: membership,
-          role: role,
-          passwordKey: passwordKey,
-          password: hashedPassword,
+          schoolId: schoolId,
+          departmentId: departmentId,
         }
       ).catch(catcher);
       if (saved) {

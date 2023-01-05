@@ -1,6 +1,8 @@
 import Link from "next/link";
 import React from "react";
 import { authlogout } from "../../hocs/auth/withAuth";
+import { AdBoxSlim } from "../AdBox";
+import MetricsLogo from "../MetricsLogo";
 
 function MobileSecureMenu() {
   return (
@@ -10,16 +12,16 @@ function MobileSecureMenu() {
       id="offcanvasExample"
     >
       <div className="sidebar-nav mb-3">
-        <div className="pb-4 mb-4 w-full">
-          <Link href="/" className="text-decoration-none">
-            <img
-              src="/img/metrics.png"
-              className="img-fluid logo w-full"
-              alt="brand-logo"
-            />
-          </Link>
-        </div>
+        <MetricsLogo />
+        <AdBoxSlim />
         <ul className="navbar-nav justify-content-end flex-grow-1">
+          <li className="nav-item">
+            <Link href="/" className="nav-link">
+              <span className="material-icons me-3">local_fire_department</span>
+              <span>Trending</span>
+            </Link>
+          </li>
+
           <li className="nav-item">
             <Link href="/" className="nav-link active">
               <span className="material-icons me-3">
@@ -32,13 +34,6 @@ function MobileSecureMenu() {
                 />
               </span>
               <span>Metrics</span>
-            </Link>
-          </li>
-
-          <li className="nav-item">
-            <Link href="/" className="nav-link">
-              <span className="material-icons me-3">local_fire_department</span>
-              <span>Trending</span>
             </Link>
           </li>
 

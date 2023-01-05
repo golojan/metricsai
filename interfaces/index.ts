@@ -1,23 +1,25 @@
-export interface UserInfo {
+import { Schema } from "mongoose";
+
+export interface SchoolInfo {
   _id?: number;
-  accountType?: string;
-  picture?: string;
-  firstname?: string;
-  lastname?: string;
-  email?: string;
-  gender?: string;
-  mobile?: string;
-  birthday?: string;
-  smsNotification?: boolean;
-  emailNotification?: boolean;
+  name?: string;
+  domain: string;
+  shortname: string;
+  state: string;
+  location: string;
+  ownedBy: string;
+  founded: Number;
 }
 
 export interface AuthUserInfo {
   _id?: number;
+  departmentId?: string;
+  schoolId?: Schema.Types.ObjectId;
   accountType?: string;
   picture?: string;
   firstname?: string;
   lastname?: string;
+  aboutMe?: string;
   username?: string;
   email?: string;
   gender?: string;

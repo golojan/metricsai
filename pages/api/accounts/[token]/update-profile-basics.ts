@@ -9,7 +9,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const handleCase: ResponseFunctions = {
     POST: async (req: NextApiRequest, res: NextApiResponse) => {
       const { token } = req.query;
-      const { accountType, firstname, lastname, gender, birthday } = req.body;
+      const { accountType, firstname, lastname, gender, birthday, aboutMe } =
+        req.body;
 
       const { Accounts } = await dbCon();
 
@@ -19,6 +20,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
           accountType: accountType,
           firstname: firstname,
           lastname: lastname,
+          aboutMe: aboutMe,
           gender: gender,
           birthday: birthday,
         }

@@ -13,13 +13,20 @@ import { hasSpacialChars } from "../../libs/hasSpacialChars";
 
 const EditProfile: NextPage = ({ token }: any) => {
   // Username Processing System //
+
+  const [bioCount, setBioCount] = useState<number>(0);
+
   const [unState, setUnState] = useState(false);
   const [unError, setUnError] = useState<string | any>("");
   const usernameRef: RefObject<HTMLInputElement> =
     useRef<HTMLInputElement>(null);
   const buttonRef: RefObject<HTMLButtonElement> =
     useRef<HTMLButtonElement>(null);
+  const aboutMeRef: RefObject<HTMLTextAreaElement> =
+    useRef<HTMLTextAreaElement>(null);
+
   const minUsernameLength = process.env.NEXT_PUBLIC_MIN_USERNAME_LENGTH || 5;
+  const aboutMeLength = process.env.NEXT_PUBLIC_ABOUT_ME_LENGTH || 200;
 
   const busyURef = () => {
     setUnError("Checking...");
@@ -140,12 +147,24 @@ const EditProfile: NextPage = ({ token }: any) => {
       }
     );
     const { status } = await response.json();
-    alert("done");
     if (status) {
+      alert("done");
     } else {
+      alert("failed");
     }
   };
 
+  const aboutMeChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    if (aboutMeRef.current) {
+      setBioCount(e.target.value.length);
+      if (e.target.value.length <= aboutMeLength) {
+        setProfile({ ...profile, aboutMe: e.target.value });
+      }
+      const height = aboutMeRef.current.scrollHeight;
+      aboutMeRef.current.style.height = `${height}px`;
+    }
+    return;
+  };
   return (
     <>
       <Layout>
@@ -349,7 +368,7 @@ const EditProfile: NextPage = ({ token }: any) => {
                               required={true}
                               className="form-control rounded-5"
                               placeholder="Firstname"
-                              id="Firstname"
+                              id="firstname"
                               value={profile.firstname}
                               onChange={(e) =>
                                 setProfile({
@@ -460,6 +479,32 @@ const EditProfile: NextPage = ({ token }: any) => {
                               }
                             />
                             <label htmlFor="birthday">DATE OF BIRTH</label>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="row">
+                        <div className="col-12">
+                          <label htmlFor="aboutMe" className="text-lg">
+                            Write a short public Bio for your profile.
+                          </label>
+                          <div className="form-floating mb-3 d-flex align-items-end mt-2">
+                            <textarea
+                              ref={aboutMeRef}
+                              required={true}
+                              maxLength={aboutMeLength as number}
+                              className="form-control rounded-5 text-xl"
+                              placeholder="About me"
+                              id="aboutMe"
+                              value={profile.aboutMe}
+                              onChange={(e) => aboutMeChange(e)}
+                            >
+                              {profile.aboutMe}
+                            </textarea>
+                            <label htmlFor="aboutMe">
+                              About Me - {bioCount} of {aboutMeLength as number}{" "}
+                              chars.
+                            </label>
                           </div>
                         </div>
                       </div>

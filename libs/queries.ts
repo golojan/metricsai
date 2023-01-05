@@ -8,6 +8,15 @@ export const fetchUserInfo = () => {
 };
 
 
+
+export const getSchools = () => {
+  return fetch(`/api/schools/list`)
+    .then((response) => response.json())
+    .then((data) => data.schools);
+};
+
+
+
 export const getUserName = async (token: string) => {
   const response = await fetch(`/api/accounts/${token}/username`);
   const user = await response.json();

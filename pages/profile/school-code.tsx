@@ -4,16 +4,25 @@ import Layout from "../../components/Layout";
 import { withAuth } from "./../../hocs/auth/withAuth";
 import { NextPage } from "next";
 
-import { AuthUserInfo } from "../../interfaces";
-import { getProfileInfo } from "./../../libs/queries";
+import { AuthUserInfo, SchoolInfo } from "../../interfaces";
+import { getProfileInfo, getSchools } from "./../../libs/queries";
+import Select from "react-select";
 
 const SchoolCode: NextPage = ({ token }: any) => {
-
+  const [schools, setSchools] = useState<[SchoolInfo]>([{} as SchoolInfo]);
   const [profile, setProfile] = useState<AuthUserInfo>({});
+
+  const schoolOptions = schools.map((school: SchoolInfo) => ({
+    value: school._id,
+    label: school.name,
+  }));
 
   useEffect(() => {
     getProfileInfo(token).then((res: AuthUserInfo) => {
       setProfile(res);
+    });
+    getSchools().then((res) => {
+      setSchools(res);
     });
   }, [token]);
 
@@ -33,12 +42,100 @@ const SchoolCode: NextPage = ({ token }: any) => {
     alert(status);
   };
 
+  const updateSchoolInformation = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    const response = await fetch(
+      `/api/accounts/${token}/update-profile-school-information`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          schoolId: profile.schoolId,
+          departmentId: profile.departmentId,
+        }),
+      }
+    );
+    const { status } = await response.json();
+    alert(status);
+  };
+
+  const handleSelectChange = (selectedOption: any) => {
+    setProfile({
+      ...profile,
+      schoolId: selectedOption.value,
+    });
+  };
+
   return (
     <>
       <Layout>
         <main className="col col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
           <div className="main-content">
             <div className="feeds">
+              <div className="bg-white p-4 feed-item rounded-4 shadow-sm faq-page mb-3">
+                <div className="mb-3">
+                  <h5 className="lead fw-bold text-body my-1">
+                    Update your School Information
+                  </h5>
+                  <p className="mb-0">
+                    Select your School from the list of Universities and enter
+                    your department in the box provides
+                  </p>
+                </div>
+                <div className="row justify-content-center">
+                  <div className="col-lg-12">
+                    <div className="row">
+                      <form onSubmit={updateSchoolInformation}>
+                        <div className="col-12">
+                          <label htmlFor="university">
+                            SELECT YOUR UNIVERSITY
+                          </label>
+                          <div className="my-2 d-flex align-items-end">
+                            <Select
+                              name="university"
+                              placeholder="Select your university"
+                              className="w-full rounded-5 text-xl clear-both"
+                              options={schoolOptions}
+                              onChange={(e) => handleSelectChange(e)}
+                              value={schoolOptions.find(
+                                (_school) => _school.value === profile.schoolId
+                              )}
+                            />
+                          </div>
+                          <div className="form-floating mb-3 d-flex align-items-center">
+                            <input
+                              type="text"
+                              className="form-control rounded-5"
+                              value={profile.departmentId}
+                              id="department"
+                              onChange={(e) =>
+                                setProfile({
+                                  ...profile,
+                                  departmentId: e.target.value,
+                                })
+                              }
+                            />
+                            <label htmlFor="department">
+                              ENTER YOUR DEPARTMENT
+                            </label>
+                          </div>
+                          <div className="d-grid">
+                            <button
+                              type="submit"
+                              className="btn btn-primary w-100 text-decoration-none rounded-5 py-3 fw-bold text-uppercase m-0"
+                            >
+                              UPDATE SCHOOL INFORMATION
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div className="bg-white p-4 feed-item rounded-4 shadow-sm faq-page mb-3">
                 <div className="mb-3">
                   <h5 className="lead fw-bold text-body my-1">
@@ -64,7 +161,7 @@ const SchoolCode: NextPage = ({ token }: any) => {
                             })
                           }
                         />
-                        <label htmlFor="floatingPass">UNIVERSITY CODE</label>
+                        <label htmlFor="schoolCode">UNIVERSITY CODE</label>
                       </div>
                       <div className="my-2 w-full">
                         In a bid to ensure that only students and lecturers of

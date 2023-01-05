@@ -46,7 +46,7 @@ function PublicLayout({ children }: Props) {
       </Head>
       {/* TopBar component */}
 
-      {/* <TopBar /> */}
+      <TopBar />
       {/* SocialMenu component */}
       <SocialMenu />
       {/* Section with the children prop surrounded by a menu and column component */}

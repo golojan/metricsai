@@ -9,9 +9,12 @@ const accountsScheme = new mongoose.Schema(
       type: String,
       unique: true,
     },
-    schoolid: {
+    schoolId: {
       type: Schema.Types.ObjectId,
       ref: "schools",
+    },
+    departmentId: {
+      type: String,
     },
     accountType: {
       type: String,
@@ -25,6 +28,7 @@ const accountsScheme = new mongoose.Schema(
     firstname: { type: String },
     middlename: { type: String },
     lastname: { type: String },
+    aboutMe: { type: String, default: "" },
     email: {
       type: String,
       unique: true,
@@ -55,7 +59,7 @@ const accountsScheme = new mongoose.Schema(
   { timestamps: true }
 );
 
-delete mongoose.models.Accounts;
+// delete mongoose.models.Accounts;
 const Accounts =
   mongoose.models.Accounts || mongoose.model("Accounts", accountsScheme);
 export default Accounts;
