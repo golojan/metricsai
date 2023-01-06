@@ -1,7 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
 mongoose.Promise = global.Promise;
-import { StateTypes, OwnerTypes } from "../interfaces/enums";
 
 const schoolsScheme = new mongoose.Schema(
   {
@@ -17,7 +16,7 @@ const schoolsScheme = new mongoose.Schema(
     location: String,
     ownedBy: { type: String },
     founded: Number,
-
+    website: { type: String },
     ranking: {
       googlePresence: { type: Number, default: 0 },
       citations: { type: Number, default: 0 },
@@ -51,7 +50,7 @@ const schoolsScheme = new mongoose.Schema(
   { timestamps: true }
 );
 
-// delete mongoose.models.Schools;
+delete mongoose.models.Schools;
 const Schools =
   mongoose.models.Schools || mongoose.model("Schools", schoolsScheme);
 export default Schools;
