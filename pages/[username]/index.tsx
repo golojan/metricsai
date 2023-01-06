@@ -67,8 +67,72 @@ const Home: NextPage = () => {
               </Link>
             </div>
 
-            <div className="bg-white rounded shadow-sm profile">
-              {/* <div className="w-full min-h-[200px] bg-black rounded-t-lg"></div> */}
+            <div className="bg-white rounded shadow-sm profile relative">
+              <div className="d-flex align-items-center small float-right mt-2 mr-2">
+                <div className="dropdown">
+                  <Link
+                    href="#"
+                    className="text-muted text-decoration-none material-icons ms-2 md-20 rounded-circle bg-ligh p-1"
+                    id="dropdownMenuButton1"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    more_vert
+                  </Link>
+                  <ul
+                    className="dropdown-menu fs-13 dropdown-menu-end"
+                    aria-labelledby="dropdownMenuButton1"
+                  >
+                    {/* <li>
+                      <Link
+                        className="dropdown-item text-muted"
+                        href="/profile/edit"
+                      >
+                        <span className="material-icons md-13 me-1">edit</span>
+                        Edit Profile
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        className="dropdown-item text-muted"
+                        href="/profile/school-code"
+                      >
+                        <span className="material-icons md-13 me-1">edit</span>
+                        Verify Your School
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        className="dropdown-item text-muted"
+                        href="/profile/academia"
+                      >
+                        <span className="material-icons md-13 me-1">edit</span>
+                        Update Academia
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        className="dropdown-item text-muted"
+                        href="/profile/notifications"
+                      >
+                        <span className="material-icons md-13 me-1">edit</span>
+                        Set Notifications
+                      </Link>
+                    </li> */}
+
+                    <li>
+                      <Link
+                        className="dropdown-item text-muted d-flex align-items-center"
+                        href="#"
+                      >
+                        <span className="material-icons md-13 me-1">share</span>
+                        Share Profile
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
               <div className="d-flex align-items-center px-3 pt-4">
                 <img
                   src={`${profile.picture}`}
