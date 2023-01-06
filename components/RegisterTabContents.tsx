@@ -280,7 +280,7 @@ function RegisterTabContents() {
                   <div className="row mt-3">
                     <div className="col-12">
                       <div className="w-full text-lg my-1">
-                        Enter your institution
+                        Enter your Department
                       </div>
                       <div className="form-floating mb-3 d-flex align-items-center">
                         <input
