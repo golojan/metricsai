@@ -282,7 +282,7 @@ function RegisterTabContents() {
                       <div className="w-full text-lg my-1">
                         Enter your Department
                       </div>
-                      <div className="form-floating mb-3 d-flex align-items-center">
+                      <div className="form-floating d-flex align-items-center">
                         <input
                           type="text"
                           className="form-control rounded-5"
