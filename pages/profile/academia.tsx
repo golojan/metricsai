@@ -6,6 +6,7 @@ import { NextPage } from "next";
 
 import { AuthUserInfo } from "../../interfaces";
 import { getProfileInfo } from "../../libs/queries";
+import { toast } from "react-toastify";
 
 const Academia: NextPage = ({ token }: any) => {
   const [profile, setProfile] = useState<AuthUserInfo>({});
@@ -29,7 +30,15 @@ const Academia: NextPage = ({ token }: any) => {
       }
     );
     const { status } = await response.json();
-    alert(status);
+    if (status) {
+      toast.success(`Google Scholar ID Updated.`, {
+        toastId: "googleScholarId-update-success",
+      });
+    } else {
+      toast.error(`Failed to update Google Scholar ID.`, {
+        toastId: "googleScholarId-update-success",
+      });
+    }
   };
 
   const saveScopusId = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -45,7 +54,15 @@ const Academia: NextPage = ({ token }: any) => {
       }
     );
     const { status } = await response.json();
-    alert(status);
+    if (status) {
+      toast.success(`Scopus Scholar ID Updated.`, {
+        toastId: "scopusId-update-success",
+      });
+    } else {
+      toast.error(`Failed to update Scopus Scholar ID.`, {
+        toastId: "scopusId-update-success",
+      });
+    }
   };
 
   const saveOrcidId = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -61,7 +78,15 @@ const Academia: NextPage = ({ token }: any) => {
       }
     );
     const { status } = await response.json();
-    alert(status);
+    if (status) {
+      toast.success(`OrcId Scholar ID Updated.`, {
+        toastId: "orcidId-update-success",
+      });
+    } else {
+      toast.error(`Failed to update OrcId Scholar ID.`, {
+        toastId: "orcidId-update-success",
+      });
+    }
   };
 
   return (

@@ -15,6 +15,8 @@ import TabContentFeeds from "../components/TabContentFeeds";
 import TabContentLecturers from "../components/TabContentLecturers";
 import TabContentStudents from "../components/TabContentStudents";
 import TabContentTrending from "../components/TabContentTrending";
+
+
 const cookie = require("js-cookie");
 const Home: NextPage = () => {
   const token = cookie.get("token");

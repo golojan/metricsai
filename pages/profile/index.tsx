@@ -10,6 +10,7 @@ import { getProfileInfo } from "../../libs/queries";
 
 import validator from "validator";
 import { hasSpacialChars } from "../../libs/hasSpacialChars";
+import { toast } from "react-toastify";
 
 const EditProfile: NextPage = ({ token }: any) => {
   // Username Processing System //
@@ -128,9 +129,14 @@ const EditProfile: NextPage = ({ token }: any) => {
       }
     );
     const { status } = await response.json();
-    alert("done");
     if (status) {
+      toast.success(`Username @${profile.username} updated successfully.`, {
+        toastId: "username-update-success",
+      });
     } else {
+      toast.error(`Failed to update username @${profile.username}.`, {
+        toastId: "username-update-success",
+      });
     }
   };
 
@@ -148,9 +154,13 @@ const EditProfile: NextPage = ({ token }: any) => {
     );
     const { status } = await response.json();
     if (status) {
-      alert("done");
+      toast.success(`Profile Updated.`, {
+        toastId: "profile-update-success",
+      });
     } else {
-      alert("failed");
+      toast.error(`Failed to update Profile.`, {
+        toastId: "profile-update-success",
+      });
     }
   };
 

@@ -7,9 +7,9 @@ import { NextPage } from "next";
 import { AuthUserInfo, SchoolInfo } from "../../interfaces";
 import { getProfileInfo, getSchools } from "./../../libs/queries";
 import Select from "react-select";
+import { toast } from "react-toastify";
 
 const SchoolCode: NextPage = ({ token }: any) => {
-
   const [schools, setSchools] = useState<[SchoolInfo]>([{} as SchoolInfo]);
   const [profile, setProfile] = useState<AuthUserInfo>({});
 
@@ -40,7 +40,15 @@ const SchoolCode: NextPage = ({ token }: any) => {
       }
     );
     const { status } = await response.json();
-    alert(status);
+    if (status) {
+      toast.success(`School Code Updated.`, {
+        toastId: "school-code-update-success",
+      });
+    } else {
+      toast.error(`Failed to update School Code.`, {
+        toastId: "school-code-update-success",
+      });
+    }
   };
 
   const updateSchoolInformation = async (e: React.SyntheticEvent) => {
@@ -59,7 +67,15 @@ const SchoolCode: NextPage = ({ token }: any) => {
       }
     );
     const { status } = await response.json();
-    alert(status);
+    if (status) {
+      toast.success(`School Information Updated.`, {
+        toastId: "schoolinfo-update-success",
+      });
+    } else {
+      toast.error(`Failed to update School Information.`, {
+        toastId: "schoolinfo-update-success",
+      });
+    }
   };
 
   const handleSelectChange = (selectedOption: any) => {
