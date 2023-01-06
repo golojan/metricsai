@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import React, { RefObject, useEffect, useRef, useState } from "react";
 import { AuthUserInfo, SchoolInfo } from "../interfaces";
 import { getProfile, getSchools } from "../libs/queries";
-import { toMonthYear } from "../libs/toDate";
+import { toMonthDayYear } from "../libs/toDate";
 
 function ProfilePage() {
   const router = useRouter();
@@ -181,7 +181,7 @@ function ProfilePage() {
             <span>
               Joined{" "}
               <strong className="text-success">
-                {toMonthYear(profile.createdAt as Date)}
+                {toMonthDayYear(profile.createdAt as Date)}
               </strong>
             </span>
 
