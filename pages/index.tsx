@@ -37,7 +37,7 @@ const Home: NextPage = () => {
             ) : (
               <>
                 <div className="feeds">
-                  <div className="bg-white p-3 feed-item rounded-4 mb-3 shadow-sm">
+                  <div className="bg-white p-3 feed-item rounded-4 my-1 shadow-sm">
                     <div className="d-flex">
                       <img
                         src="/img/rmate2.jpg"
@@ -93,11 +93,7 @@ const Home: NextPage = () => {
                             </div>
                           </div>
                           <div className="my-2">
-                            <p className="mb-3 text-primary">
-                              Welcome to the Metrics Ranking system, where we
-                              help our Universities rank better 🙂
-                            </p>
-                            <p className="mb-3">
+                            <p className="my-3">
                               We are excited to have you here. We are a
                               community of students, lecturers, and
                               professionals who believe in the power of
@@ -158,162 +154,12 @@ const Home: NextPage = () => {
                               </span>
                               <input
                                 type="text"
+                                disabled={true}
                                 className="form-control form-control-sm rounded-3 fw-light h-auto"
                                 placeholder="Write Your comment"
                               />
                             </div>
-                            <div className="comments">
-                              <div className="d-flex mb-2">
-                                <a
-                                  href="#"
-                                  className="text-dark text-decoration-none"
-                                  data-bs-toggle="modal"
-                                  data-bs-target="#commentModal"
-                                >
-                                  <img
-                                    src="/img/rmate1.jpg"
-                                    className="img-fluid rounded-circle"
-                                    alt="commenters-img"
-                                  />
-                                </a>
-                                <div className="ms-2 small">
-                                  <a
-                                    href="#"
-                                    className="text-dark text-decoration-none"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#commentModal"
-                                  >
-                                    <div className="bg-light px-3 py-2 rounded-4 mb-1 chat-text">
-                                      <p className="fw-500 mb-0">
-                                        Macie Bellis
-                                      </p>
-                                      <span className="text-muted">
-                                        Consectetur adipisicing elit, sed do
-                                        eiusmod tempor incididunt ut labore et
-                                        dolor.
-                                      </span>
-                                    </div>
-                                  </a>
-                                  <div className="d-flex align-items-center ms-2">
-                                    <a
-                                      href="#"
-                                      className="small text-muted text-decoration-none"
-                                    >
-                                      Like
-                                    </a>
-                                    <span className="fs-3 text-muted material-icons mx-1">
-                                      circle
-                                    </span>
-                                    <a
-                                      href="#"
-                                      className="small text-muted text-decoration-none"
-                                    >
-                                      Reply
-                                    </a>
-                                    <span className="fs-3 text-muted material-icons mx-1">
-                                      circle
-                                    </span>
-                                    <span className="small text-muted">1h</span>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="d-flex mb-2">
-                                <a
-                                  href="#"
-                                  className="text-dark text-decoration-none"
-                                  data-bs-toggle="modal"
-                                  data-bs-target="#commentModal"
-                                >
-                                  <img
-                                    src="/img/rmate3.jpg"
-                                    className="img-fluid rounded-circle"
-                                    alt="commenters-img"
-                                  />
-                                </a>
-                                <div className="ms-2 small">
-                                  <a
-                                    href="#"
-                                    className="text-dark text-decoration-none"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#commentModal"
-                                  >
-                                    <div className="bg-light px-3 py-2 rounded-4 mb-1 chat-text">
-                                      <p className="fw-500 mb-0">John Smith</p>
-                                      <span className="text-muted">
-                                        Lorem ipsum dolor sit amet, consectetur
-                                        adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna
-                                        aliqua. Ut enim ad minim veniam.
-                                      </span>
-                                    </div>
-                                  </a>
-                                  <div className="d-flex align-items-center ms-2">
-                                    <a
-                                      href="#"
-                                      className="small text-muted text-decoration-none"
-                                    >
-                                      Like
-                                    </a>
-                                    <span className="fs-3 text-muted material-icons mx-1">
-                                      circle
-                                    </span>
-                                    <a
-                                      href="#"
-                                      className="small text-muted text-decoration-none"
-                                    >
-                                      Reply
-                                    </a>
-                                    <span className="fs-3 text-muted material-icons mx-1">
-                                      circle
-                                    </span>
-                                    <span className="small text-muted">
-                                      20min
-                                    </span>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="d-flex mb-2">
-                                <div className="ms-2 small">
-                                  <a
-                                    href="#"
-                                    className="text-dark text-decoration-none"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#commentModal"
-                                  >
-                                    <div className="bg-light px-3 py-2 rounded-4 mb-1 chat-text">
-                                      <p className="fw-500 mb-0">Shay Jordon</p>
-                                      <span className="text-muted">
-                                        With our vastly improved notifications
-                                        system, users have more control.
-                                      </span>
-                                    </div>
-                                  </a>
-                                  <div className="d-flex align-items-center ms-2">
-                                    <a
-                                      href="#"
-                                      className="small text-muted text-decoration-none"
-                                    >
-                                      Like
-                                    </a>
-                                    <span className="fs-3 text-muted material-icons mx-1">
-                                      circle
-                                    </span>
-                                    <a
-                                      href="#"
-                                      className="small text-muted text-decoration-none"
-                                    >
-                                      Reply
-                                    </a>
-                                    <span className="fs-3 text-muted material-icons mx-1">
-                                      circle
-                                    </span>
-                                    <span className="small text-muted">
-                                      10min
-                                    </span>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
+                            <div className="comments"></div>
                           </div>
                         </div>
                       </div>
