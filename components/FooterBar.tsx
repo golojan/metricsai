@@ -8,8 +8,7 @@ function FooterBar() {
         <div className="row align-items-center">
           <div className="col-md-8">
             <span className="me-3">
-              © 2021 <b className="text-primary">Metrics AI</b>. All rights
-              reserved
+              © 2021 <b className="text-primary">Metrics AI</b>
             </span>
           </div>
           <div className="col-md-4 text-end">
