@@ -7,7 +7,7 @@ import HashBox from "./HashBox";
 import TrendingWith from "./TrendingWith";
 import TrendingBox from "./TrendingBox";
 import NewsBox from "./NewsBox";
-import { AdBox, AdBoxLarge, AdBoxMidium } from "./AdBox";
+import { AdBox } from "./AdBox";
 const cookie = require("js-cookie");
 
 function RightColumn() {
@@ -19,7 +19,7 @@ function RightColumn() {
           <div className="sticky-sidebar2 mb-3">
             <>
               {token ? <SearchBar /> : null}
-              <AdBoxLarge />
+              <AdBox />
               <div className="bg-white rounded-4 overflow-hidden shadow-sm mb-4">
                 <h6 className="fw-bold text-body p-3 mb-0 border-bottom">
                   What&apos;s happening
@@ -33,7 +33,6 @@ function RightColumn() {
                   <div className="p-3">Show More</div>
                 </Link>
               </div>
-              <AdBox />
               {/* <WhoToFollow /> */}
             </>
           </div>

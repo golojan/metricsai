@@ -1,4 +1,5 @@
 import React from "react";
+import { toast } from "react-toastify";
 import { authLogin } from "../hocs/auth/withAuth";
 
 function LoginTabContents() {
@@ -18,9 +19,17 @@ function LoginTabContents() {
     });
     const { status, token } = await response.json();
     if (status) {
+      toast.success(`Account found, redirecting you to your profile page...`, {
+        toastId: "account-login-success",
+      });
       authLogin(token);
     } else {
-      alert("Invalid Username and Password.");
+      toast.error(
+        `Invalid Email or Password: Try again or try resetting your password.`,
+        {
+          toastId: "account-login-success",
+        }
+      );
     }
   };
 

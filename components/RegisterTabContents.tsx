@@ -67,17 +67,14 @@ function RegisterTabContents() {
     });
     const { status, token } = await response.json();
     if (status) {
-      toast.success(`Account found...`, {
-        toastId: "scopusId-update-success",
+      toast.success(`Account created successfully, logging you in...`, {
+        toastId: "register-account-success",
       });
       authLogin(token);
     } else {
-      toast.error(
-        `Invalid Email or Password: Try again or try resetting your password.`,
-        {
-          toastId: "scopusId-update-success",
-        }
-      );
+      toast.error(`Account registration failed. Server may be having issues, try again after some time.`, {
+        toastId: "register-account-success",
+      });
     }
   };
 
