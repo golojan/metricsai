@@ -260,8 +260,8 @@ function ProfilePage() {
               </div>
             </div>{" "}
           </div>
-          <div className="p my-3 p-2 bg-[#edf2f6] rounded-4 fs-6 text-gray-700 hover:text-gray-700">
-            {profile.aboutMe}
+          <div className="my-2 px-4 py-2 bg-[#fffccf] rounded-4 text-[#373435] hover:text-[#373435]">
+            <span className="text-lg">{profile.aboutMe}</span>
           </div>
 
           <hr className="mb-2" />
