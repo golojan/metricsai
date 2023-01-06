@@ -20,19 +20,19 @@ export default async function handler(
         return;
       }
       const { Accounts } = await dbCon();
-      await Accounts.findOne({
-        username: username,
-      })
-        .then((account) => {
-          if (account) {
-            res.status(200).json({ status: true, error: "Username Exists" });
-            return;
-          } else {
-            res.status(400).json({ status: false, error: "Username id free" });
-            return;
-          }
-        })
-        .catch(catcher);
+     await Accounts.findOne({
+       username: username,
+     })
+       .then((account) => {
+         if (account) {
+           res.status(200).json({ status: true, error: "Username Exists" });
+           return;
+         } else {
+           res.status(400).json({ status: false, error: "Username id free" });
+           return;
+         }
+       })
+       .catch(catcher);
     },
   };
   const response = handleCase[method];

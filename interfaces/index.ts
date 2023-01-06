@@ -11,6 +11,14 @@ export interface SchoolInfo {
   founded: Number;
 }
 
+
+
+export interface UserSnippet {
+  status?: boolean;
+  _id?: number;
+  error?: string;
+}
+
 export interface AuthUserInfo {
   _id?: number;
   departmentId?: string;
@@ -31,6 +39,8 @@ export interface AuthUserInfo {
   googleScholarId?: string;
   scopusId?: string;
   orcidId?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 export interface ResponseFunctions {

@@ -1,13 +1,10 @@
 import React from "react";
 import { authLogin } from "../hocs/auth/withAuth";
-import { AccountTypes } from "../interfaces/enums";
 
 function LoginTabContents() {
-
   const [login, setLogin] = React.useState({
     username: "",
     password: "",
-    accountType: AccountTypes.GUEST as string,
   });
 
   const handleLogin = async (e: any) => {
@@ -45,7 +42,7 @@ function LoginTabContents() {
             <div>
               <span className="text-muted text_short">Welcome back Guest</span>
               <h5 className="mb-0 text-dark">
-                <span className="fw-bold">Join the Scoreboard!</span>
+                <span className="fw-bold">Login to Metrics</span>
               </h5>
             </div>
           </header>
@@ -53,87 +50,13 @@ function LoginTabContents() {
         <div className="feeds">
           <div className="bg-white px-4 py-4 feed-item rounded-4 shadow-sm mb-3 faq-page">
             <form onSubmit={handleLogin}>
-              <div className="row py-3 gy-3 m-0">
-                <div className="langauge-item col-12 col-md-4 px-1 mt-2">
-                  <input
-                    type="radio"
-                    required={true}
-                    className="btn-check"
-                    id="login_guest"
-                    name="accountType"
-                    value={AccountTypes.GUEST}
-                    defaultChecked
-                    onChange={(e) =>
-                      setLogin({ ...login, accountType: e.target.value })
-                    }
-                  />
-                  <label
-                    htmlFor="login_guest"
-                    className="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between"
-                  >
-                    <span className="text-start d-grid">
-                      <small className="ln-18">I am a Guest</small>
-                    </span>
-                    <span className="material-icons text-muted md-20">
-                      check_circle
-                    </span>
-                  </label>
-                </div>
-
-                <div className="langauge-item col-12 col-md-4 px-1 mt-2">
-                  <input
-                    type="radio"
-                    required={true}
-                    className="btn-check"
-                    id="login_student"
-                    name="accountType"
-                    value={AccountTypes.STUDENT}
-                    onChange={(e) =>
-                      setLogin({ ...login, accountType: e.target.value })
-                    }
-                  />
-                  <label
-                    htmlFor="login_student"
-                    className="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between"
-                  >
-                    <span className="text-start d-grid">
-                      <small className="ln-18">I am a Student</small>
-                    </span>
-                    <span className="material-icons text-muted md-20">
-                      check_circle
-                    </span>
-                  </label>
-                </div>
-
-                <div className="langauge-item col-12 col-md-4 px-1 mt-2">
-                  <input
-                    type="radio"
-                    required={true}
-                    className="btn-check"
-                    id="login_lecturer"
-                    name="accountType"
-                    value={AccountTypes.LECTURER}
-                    onChange={(e) =>
-                      setLogin({ ...login, accountType: e.target.value })
-                    }
-                  />
-                  <label
-                    htmlFor="login_lecturer"
-                    className="btn btn-language btn-sm px-2 py-2 rounded-5 d-flex align-items-center justify-content-between"
-                  >
-                    <span className="text-start d-grid">
-                      <small className="ln-18">I am a Lecturer</small>
-                    </span>
-                    <span className="material-icons text-muted md-20">
-                      check_circle
-                    </span>
-                  </label>
-                </div>
-              </div>
-              <div className="row justify-content-center">
+              <div className="row justify-content-center pt-4">
                 <div className="col-lg-12">
                   <div className="row">
                     <div className="col-12">
+                      <label htmlFor="email" className="text-lg">
+                        Email Address
+                      </label>
                       <div className="form-floating mb-3 d-flex align-items-end">
                         <input
                           type="email"
@@ -155,6 +78,9 @@ function LoginTabContents() {
 
                   <div className="row">
                     <div className="col-12">
+                      <label htmlFor="email" className="text-lg">
+                        Password
+                      </label>
                       <div className="form-floating mb-3 d-flex align-items-center">
                         <input
                           type="password"

@@ -14,7 +14,7 @@ export default async function handler(
   const catcher = (error: Error) => res.status(400).json({ error });
   const handleCase: ResponseFunctions = {
     POST: async (req: NextApiRequest, res: NextApiResponse) => {
-      const { username, password, accountType } = req.body;
+      const { username, password } = req.body;
       const { Accounts, Schools } = await dbCon();
 
       await Accounts.findOne({
@@ -27,33 +27,11 @@ export default async function handler(
               account.password
             );
             if (isPasswordValid) {
-              //Password is valid//
-              if (accountType === AccountTypes.GUEST) {
-                // Handle Guest Login
-                res.status(200).json({
-                  status: true,
-                  token: account._id,
-                });
-                return;
-              }
 
-              if (accountType === AccountTypes.STUDENT) {
-                // Handle Student Login
-                res.status(200).json({
-                  status: true,
-                  token: account._id,
-                });
-                return;
-              }
-
-              if (accountType === AccountTypes.LECTURER) {
-                // Handle Teacher Login
-                res.status(200).json({
-                  status: true,
-                  token: account._id,
-                });
-                return;
-              }
+              res.status(200).json({
+                status: true,
+                token: account._id,
+              });
             } else {
               res
                 .status(400)

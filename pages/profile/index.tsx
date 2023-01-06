@@ -269,6 +269,7 @@ const EditProfile: NextPage = ({ token }: any) => {
                         className="btn-check"
                         id="guest"
                         name="membership"
+                        disabled={true}
                         value={AccountTypes.GUEST}
                         checked={
                           profile.accountType ==

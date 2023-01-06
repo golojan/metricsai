@@ -247,7 +247,9 @@ function RegisterTabContents() {
               className="rounded-circle me-3"
             />
             <div>
-              <span className="text-muted text_short">Welcome Guest</span>
+              <span className="text-muted text_short">
+                Hi Guest, Welcome to Matrics AI.
+              </span>
               <h5 className="mb-0 text-dark">
                 <span className="fw-bold">Join the scoreboard!</span>
               </h5>
