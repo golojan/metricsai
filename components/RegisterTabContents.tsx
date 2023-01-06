@@ -6,6 +6,7 @@ import { hasSpacialChars } from "../libs/hasSpacialChars";
 import Select from "react-select";
 import { SchoolInfo } from "../interfaces";
 import { getSchools } from "../libs/queries";
+import { toast } from "react-toastify";
 
 function RegisterTabContents() {
   const [done, setDone] = useState<boolean>(true);
@@ -66,9 +67,17 @@ function RegisterTabContents() {
     });
     const { status, token } = await response.json();
     if (status) {
+      toast.success(`Account found...`, {
+        toastId: "scopusId-update-success",
+      });
       authLogin(token);
     } else {
-      alert("Invalid Username and Password.");
+      toast.error(
+        `Invalid Email or Password: Try again or try resetting your password.`,
+        {
+          toastId: "scopusId-update-success",
+        }
+      );
     }
   };
 
